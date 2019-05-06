@@ -41,7 +41,7 @@ This sample code shows you how to moderate images with Content Moderator.
 
 ## Building and Running the Sample
 
-1. From the command line, navigate to the samples root directory: ...\cognitive-services-samples\java\content-moderator\moderate-images.
+1. From the command line, navigate to the samples root directory: `...\cognitive-services-samples\java\content-moderator\moderate-images`.
 2. Enter `mvn compile exec:java -Dexec.cleanupDaemonThreads=false`.
 
 ## Next steps
