@@ -8,6 +8,9 @@
   <name>ImageModeration.java</name>
   <description></description>
   <url>https://github.com/Azure/bing-search-java</url>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
   <build>
     <plugins>
 	  <plugin>
@@ -53,8 +56,8 @@
   <dependency>
     <groupId>com.fasterxml.jackson.core</groupId>
     <artifactId>jackson-databind</artifactId>
-       <version>2.7.4</version>
-</dependency>
+       <version>2.8.11.1</version>
+  </dependency>
     <dependency>
       <groupId>com.microsoft.azure</groupId>
       <artifactId>azure</artifactId>
