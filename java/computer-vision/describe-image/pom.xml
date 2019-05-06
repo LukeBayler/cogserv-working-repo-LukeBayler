@@ -5,7 +5,7 @@
   <groupId>com.microsoft.azure</groupId>
   <artifactId>azure-contentmoderator-sample</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>ImageModeration.java</name>
+  <name>DescribeImage.java</name>
   <description></description>
   <url>https://github.com/Azure/bing-search-java</url>
   <properties>
@@ -43,7 +43,7 @@
               </descriptorRefs>
               <archive>
                 <manifest>
-                  <mainClass>ImageModeration</mainClass>
+                  <mainClass>DescribeImage</mainClass>
                 </manifest>
               </archive>
             </configuration>
@@ -70,7 +70,7 @@
     </dependency>
     <dependency>
       <groupId>com.microsoft.azure.cognitiveservices</groupId>
-      <artifactId>azure-cognitiveservices-contentmoderator</artifactId>
+      <artifactId>azure-cognitiveservices-computervision</artifactId>
       <version>1.0.2-beta</version>
     </dependency>
   </dependencies>
