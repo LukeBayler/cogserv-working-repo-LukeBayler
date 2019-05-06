@@ -17,7 +17,7 @@ public class DescribeImage {
         
         System.out.println("Describing local image...");
         
-        String imagePath = "C:\\Users\\v-lubayl\\OneDrive - Microsoft\\_aquent\\cognitive-services\\samples\\files\\upside-down-mushroom.jpg";
+        String imagePath = "C:\\Users\\v-lubayl\\Documents\\GitHub\\cognitive-services-samples\\java\\computer-vision\\describe-image\\src\\main\\resources\\upside-down-mushroom.jpg";
         File rawImage = new File(imagePath);
         
         try {
