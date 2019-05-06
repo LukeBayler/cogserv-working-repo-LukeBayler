@@ -25,13 +25,11 @@ public class TagVisualFeatures {
             visualFeatureTypes.add(VisualFeatureTypes.TAGS);
             ImageAnalysis imgAnalysis = compVisClient.computerVision().analyzeImageInStream().withImage(imageBytes).withVisualFeatures(visualFeatureTypes).execute();
     
-            System.out.print("Description: ");      
+            System.out.println("Tags : Confidence");      
             for (ImageTag tag : imgAnalysis.tags()) {
                 System.out.println(String.format("%s\t\t%s", tag.name(), tag.confidence()));
             }
                  
-            System.out.println(imgAnalysis.description().captions().get(0).text());
-
         } catch (Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();

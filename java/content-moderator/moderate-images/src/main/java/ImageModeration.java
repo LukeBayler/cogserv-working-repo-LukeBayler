@@ -38,13 +38,13 @@ public class ImageModeration {
      * You will need to create an input file and update this path
      * accordingly. Relative paths are relative to the execution directory.
     */
-    private static String ImageUrlFile = "C:\\samples\\cognitive-services-samples-master\\java\\content-moderator\\moderate-images\\src\\resources\\ImageFiles.txt";
+    private static String ImageUrlFile = "C:\\Users\\v-lubayl\\Documents\\Github\\cognitive-services-samples\\java\\content-moderator\\moderate-images\\src\\main\\resources\\ImageFiles.txt";
  
     /*
      * The name of the file to contain the output from the evaluation.
      * Relative paths are relative the execution directory.
      */
-    private static String OutputFile = "C:\\samples\\cognitive-services-samples-master\\java\\content-moderator\\moderate-images\\src\\resources\\ModerationOutput.json";
+    private static String OutputFile = "C:\\Users\\v-lubayl\\Documents\\GitHub\\cognitive-services-samples\\java\\content-moderator\\moderate-images\\src\\main\\resources\\ModerationOutput.json";
 
     public static void main(String[] args) {
     
@@ -65,11 +65,11 @@ public class ImageModeration {
             String line;
             while ((line = inputStream.readLine()) != null) {
                 if (line.length() > 0) {
-                    System.out.println("checking line in file: " + line);
-                    System.out.println("checking baseUrl(): " + client.baseUrl());
+                    //System.out.println("checking line in file: " + line);
+                    //System.out.println("checking baseUrl(): " + client.baseUrl());
                     EvaluationData imageData = EvaluateImage(client, line);
                     
-                    System.out.println("adding imageData to list: " + imageData);
+                    //System.out.println("adding imageData to list: " + imageData);
                     evaluationData.add(imageData);
                 }
             }
@@ -111,8 +111,8 @@ public class ImageModeration {
         EvaluationData imageData = new EvaluationData();     
         imageData.ImageUrl = url.value();
         
-        System.out.println("url: " + url);
-        System.out.println("imageData.ImageUrl: " + imageData.ImageUrl);
+        //System.out.println("url: " + url);
+        //System.out.println("imageData.ImageUrl: " + imageData.ImageUrl);
 
         // Evaluate for adult and racy content.
         imageData.ImageModeration = client.imageModerations().evaluateUrlInput("application/json", url, new EvaluateUrlInputOptionalParameter().withCacheImage(true));
