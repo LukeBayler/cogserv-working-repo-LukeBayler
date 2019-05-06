@@ -2,9 +2,9 @@
   {
     "ImageUrl": "https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg",
     "ImageModeration": {
-      "cacheID": "615853ba-547c-4d52-a45d-1781b207066d_636924274580716798",
+      "cacheID": "5aa70d0a-c7ac-4f68-84ea-b59088cf8b83_636927617901704808",
       "result": false,
-      "trackingId": "WU_ibiza_85000fc4-997c-470d-b4f1-6f59d3d6cc11_CognitiveServices.S0_b8a2cb17-c523-4335-938e-03cf5cbb1799",
+      "trackingId": "WU_ibiza_85000fc4-997c-470d-b4f1-6f59d3d6cc11_CognitiveServices.S0_54472a65-0a36-4e8b-a671-c49fb8b41356",
       "adultClassificationScore": 0.021854378283023834,
       "isImageAdultClassified": false,
       "racyClassificationScore": 0.045791395008563995,
@@ -12,7 +12,7 @@
       "advancedInfo": [
         {
           "key": "ImageDownloadTimeInMs",
-          "value": "108"
+          "value": "178"
         },
         {
           "key": "ImageSizeInBytes",
@@ -32,14 +32,14 @@
       "metadata": [
         {
           "key": "ImageDownloadTimeInMs",
-          "value": "13"
+          "value": "67"
         },
         {
           "key": "ImageSizeInBytes",
           "value": "273405"
         }
       ],
-      "trackingId": "WU_ibiza_85000fc4-997c-470d-b4f1-6f59d3d6cc11_CognitiveServices.S0_ead03150-d402-4f77-9afe-79f94f4d41ef",
+      "trackingId": "WU_ibiza_85000fc4-997c-470d-b4f1-6f59d3d6cc11_CognitiveServices.S0_3893360f-38a3-4f2f-a3d9-86be19cc89b8",
       "language": "eng",
       "text": "IF WE DID \r\nALL \r\nTHE THINGS \r\nWE ARE \r\nCAPABLE \r\nOF DOING, \r\nWE WOULD \r\nLITERALLY \r\nASTOUND \r\nOURSELVE \r\n",
       "candidates": []
@@ -49,13 +49,13 @@
         "code": 3000,
         "description": "OK"
       },
-      "trackingId": "WU_ibiza_85000fc4-997c-470d-b4f1-6f59d3d6cc11_CognitiveServices.S0_9c6b996b-b2d3-4126-af9e-bea8ba81be30",
+      "trackingId": "WU_ibiza_85000fc4-997c-470d-b4f1-6f59d3d6cc11_CognitiveServices.S0_e8e02885-414b-481e-a5f3-de8ff85f7bfe",
       "result": false,
       "count": 0,
       "advancedInfo": [
         {
           "key": "ImageDownloadTimeInMs",
-          "value": "16"
+          "value": "11"
         },
         {
           "key": "ImageSizeInBytes",
@@ -68,9 +68,9 @@
   {
     "ImageUrl": "https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png",
     "ImageModeration": {
-      "cacheID": "2f571826-3319-4fe1-b610-955349aa583b_636924274648060031",
+      "cacheID": "b7bffdce-3ef0-4e41-9ec5-0380769abade_636927617968328802",
       "result": false,
-      "trackingId": "WU_ibiza_85000fc4-997c-470d-b4f1-6f59d3d6cc11_CognitiveServices.S0_46237f6c-8124-4985-8765-0b6d294a70c6",
+      "trackingId": "WU_ibiza_85000fc4-997c-470d-b4f1-6f59d3d6cc11_CognitiveServices.S0_d3457aef-4a33-4864-849c-6b1ad8e9444d",
       "adultClassificationScore": 0.0013530384749174118,
       "isImageAdultClassified": false,
       "racyClassificationScore": 0.0045312256552278996,
@@ -78,7 +78,7 @@
       "advancedInfo": [
         {
           "key": "ImageDownloadTimeInMs",
-          "value": "87"
+          "value": "93"
         },
         {
           "key": "ImageSizeInBytes",
@@ -98,14 +98,14 @@
       "metadata": [
         {
           "key": "ImageDownloadTimeInMs",
-          "value": "50"
+          "value": "98"
         },
         {
           "key": "ImageSizeInBytes",
           "value": "2278902"
         }
       ],
-      "trackingId": "WU_ibiza_85000fc4-997c-470d-b4f1-6f59d3d6cc11_CognitiveServices.S0_e2105da3-293a-4f78-ae4b-1bc5dffd7eeb",
+      "trackingId": "WU_ibiza_85000fc4-997c-470d-b4f1-6f59d3d6cc11_CognitiveServices.S0_e68a0fc6-dbb6-41db-aaca-2301fd5b5246",
       "language": "eng",
       "text": "",
       "candidates": []
@@ -115,13 +115,13 @@
         "code": 3000,
         "description": "OK"
       },
-      "trackingId": "WU_ibiza_85000fc4-997c-470d-b4f1-6f59d3d6cc11_CognitiveServices.S0_bca2e3f4-6a85-4363-8010-92bc46fe0bfe",
+      "trackingId": "WU_ibiza_85000fc4-997c-470d-b4f1-6f59d3d6cc11_CognitiveServices.S0_4b3187ad-4345-4f28-b9e0-421ade5e6e2b",
       "result": true,
       "count": 6,
       "advancedInfo": [
         {
           "key": "ImageDownloadTimeInMs",
-          "value": "54"
+          "value": "96"
         },
         {
           "key": "ImageSizeInBytes",

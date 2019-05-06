@@ -38,24 +38,24 @@ public class ImageModeration {
      * You will need to create an input file and update this path
      * accordingly. Relative paths are relative to the execution directory.
     */
-    private static String ImageUrlFile = "C:\\samples\\files\\ImageFiles.txt";
+    private static String ImageUrlFile = "C:\\samples\\cognitive-services-samples-master\\java\\content-moderator\\moderate-images\\src\\resources\\ImageFiles.txt";
  
     /*
      * The name of the file to contain the output from the evaluation.
      * Relative paths are relative the execution directory.
      */
-    private static String OutputFile = "C:\\samples\\files\\ModerationOutput.json";
+    private static String OutputFile = "C:\\samples\\cognitive-services-samples-master\\java\\content-moderator\\moderate-images\\src\\resources\\ModerationOutput.json";
 
     public static void main(String[] args) {
     
         // The base URL fragment for Content Moderator calls.
-        String AzureBaseURL = "<ADD-REGION-HERE>";
+        String AzureBaseURL = "https://westus.api.cognitive.microsoft.com";
 
         // Your Content Moderator subscription key.
-        String CMSubscriptionKey = "<ADD-KEY-HERE>";
+        String CMSubscriptionKey = "bed9632798b9496bab97d18e31d0fde9";
         
         ContentModeratorClient client = ContentModeratorManager.authenticate(new AzureRegionBaseUrl().fromString(AzureBaseURL), CMSubscriptionKey);
-        //System.out.println("baseUrl(): " + client.baseUrl());
+        System.out.println("baseUrl(): " + client.baseUrl());
         
         // Create an object in which to store the image moderation results.
         List<EvaluationData> evaluationData = new ArrayList<EvaluationData>();
@@ -65,11 +65,11 @@ public class ImageModeration {
             String line;
             while ((line = inputStream.readLine()) != null) {
                 if (line.length() > 0) {
-                    //System.out.println("checking line in file: " + line);
-                    //System.out.println("checking baseUrl(): " + client.baseUrl());
+                    System.out.println("checking line in file: " + line);
+                    System.out.println("checking baseUrl(): " + client.baseUrl());
                     EvaluationData imageData = EvaluateImage(client, line);
                     
-                    //System.out.println("adding imageData to list: " + imageData);
+                    System.out.println("adding imageData to list: " + imageData);
                     evaluationData.add(imageData);
                 }
             }
@@ -111,8 +111,8 @@ public class ImageModeration {
         EvaluationData imageData = new EvaluationData();     
         imageData.ImageUrl = url.value();
         
-        //System.out.println("url: " + url);
-        //System.out.println("imageData.ImageUrl: " + imageData.ImageUrl);
+        System.out.println("url: " + url);
+        System.out.println("imageData.ImageUrl: " + imageData.ImageUrl);
 
         // Evaluate for adult and racy content.
         imageData.ImageModeration = client.imageModerations().evaluateUrlInput("application/json", url, new EvaluateUrlInputOptionalParameter().withCacheImage(true));
