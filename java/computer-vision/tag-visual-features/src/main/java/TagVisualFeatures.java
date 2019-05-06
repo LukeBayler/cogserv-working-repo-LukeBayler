@@ -15,7 +15,7 @@ public class TagVisualFeatures {
         ComputerVisionClient compVisClient = ComputerVisionManager.authenticate(CMSubscriptionKey).withEndpoint(AzureBaseURL);
         System.out.println("compVisClient.endpoint(): " + compVisClient.endpoint());
                 
-        String imagePath = "C:\\samples\\files\\upside-down-mushroom.jpg";
+        String imagePath = "C:\\Users\\v-lubayl\\Documents\\GitHub\\cognitive-services-samples\\java\\computer-vision\\tag-visual-features\\src\\main\\resources\\upside-down-mushroom.jpg";
         File rawImage = new File(imagePath);
         
         try {
