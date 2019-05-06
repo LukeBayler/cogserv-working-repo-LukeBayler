@@ -1,4 +1,4 @@
-# Quickstarts for Microsoft Cognitive Services
+# Sample Code for Microsoft Cognitive Services
 
 Below is a list representation of the directory structure and the samples within each directory:
 - Java
