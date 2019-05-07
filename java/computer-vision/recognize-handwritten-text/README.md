@@ -27,7 +27,7 @@ This sample code shows you how to recognize handwritten text with Computer Visio
 
 ## Setup
 
-- Clone or download this sample repository.
+- [Download this sample repository](https://github.com/LukeBayler/cognitive-services-samples/archive/master.zip).
 
 ## Running the sample
 
