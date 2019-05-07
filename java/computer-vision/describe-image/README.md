@@ -41,9 +41,9 @@ This sample code shows you how to describe images with the Computer Vision API.
 ## Building and Running the Sample
 
 1. Open a command prompt and navigate to the directory where you extracted the sample repository.
-2. Navigate to the subdirectory containing this sample: `cognitive-services-samples\java\computer-vision\describe-image`.
+2. Navigate to the subdirectory containing this sample, which is: `cognitive-services-samples\java\computer-vision\describe-image`.
 2. Enter `mvn compile exec:java -Dexec.cleanupDaemonThreads=false`.
 
 ## Next steps
 
-You can learn more about describing images with Computer Vision at the [official documentation site](https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/concept-describing-images).
+For more information about describing images with the Computer Vision API, visit the [official documentation site](https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/concept-describing-images).
