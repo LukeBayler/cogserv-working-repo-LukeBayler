@@ -31,14 +31,14 @@ This sample code shows you how to describe images with Computer Vision.
 
 ## Running the sample
 
-1. Update the `AzureBaseURL` string with your region.
-2. Update the `CMSubscriptionKey` with your subscription key.
-3. Update the `imagePath` string representing a file path to a location on your local machine that contains the image to be described.
+1. Update the `BaseURL` string with your region.
+2. Update the `subKey` with your subscription key.
+3. Update the `imgPath` string representing a file path to a location on your local machine that contains the image to be described.
 
 ## Building and Running the Sample
 
 1. From the command line, navigate to the samples root directory: `...\cognitive-services-samples\java\computer-vision\describe-image`.
-2. Enter `mvn compile exec:java -Dexec.cleanupDaemonThreads=false`.
+2. Enter `mvn compile exec:java -Dexec.cleanupDaemonThreads=false -Dexec.args="YOUR-SUBSCRIPTION-KEY"`.
 
 ## Next steps
 
