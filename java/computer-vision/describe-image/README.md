@@ -31,7 +31,7 @@ This sample code shows you how to describe images with Computer Vision.
 
 ## Running the sample
 
-1. Update the `BaseURL` string with your region.
+1. Update the `baseURL` string with your region.
 2. Update the `subKey` with your subscription key.
 3. Update the `imgPath` string representing a file path to a location on your local machine that contains the image to be described.
 
