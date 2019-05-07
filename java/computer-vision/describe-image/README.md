@@ -17,8 +17,9 @@ This sample code shows you how to describe images with Computer Vision.
 
 | File/folder | Description |
 |-------------|-------------|
-| `DescribeImage.java` | Java source file. |
 | `README.md`            | This README file. |
+| `src\main\java` | Java source file. |
+| `src\main\resources` | Image file to describe. |
 
 ## Prerequisites
 
@@ -31,14 +32,14 @@ This sample code shows you how to describe images with Computer Vision.
 
 ## Running the sample
 
-1. Update the `baseURL` string with your region.
-2. Update the `subKey` with your subscription key.
-3. Update the `imgPath` string representing a file path to a location on your local machine that contains the image to be described.
+1. Store your Computer Vision API key in the `AZURE_COMPUTERVISION_API_KEY` environment variable.
+2. Store your Azure endpoint in the `AZURE_ENDPOINT` environment variable.
+3. Place an image file to be desrbied in the `src\main\resources` directory, and name it `describe-image.jpg`.
 
 ## Building and Running the Sample
 
 1. From the command line, navigate to the samples root directory: `...\cognitive-services-samples\java\computer-vision\describe-image`.
-2. Enter `mvn compile exec:java -Dexec.cleanupDaemonThreads=false -Dexec.args="YOUR-SUBSCRIPTION-KEY"`.
+2. Enter `mvn compile exec:java -Dexec.cleanupDaemonThreads=false`.
 
 ## Next steps
 
