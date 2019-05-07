@@ -11,10 +11,9 @@ public class DescribeImage {
 
     public static void main(String[] args) {  
 
-        //  First command-line argument is the subscription key.
-        String subKey = args[0];
+        String subKey = System.getenv("AZURE_COMPUTERVISION_API_KEY");
+        String baseURL = System.getenv("AZURE_ENDPOINT");
 
-        String baseURL = "https://westus.api.cognitive.microsoft.com";
         ComputerVisionClient compVisClient = ComputerVisionManager.authenticate(subKey).withEndpoint(baseURL);
         System.out.println("compVisClient.endpoint(): " + compVisClient.endpoint());
         
