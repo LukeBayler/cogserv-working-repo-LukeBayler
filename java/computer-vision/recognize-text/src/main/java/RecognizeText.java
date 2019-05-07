@@ -15,7 +15,7 @@ public class RecognizeText {
         ComputerVisionClient compVisClient = ComputerVisionManager.authenticate(CVSubscriptionKey).withEndpoint(AzureBaseURL);
         System.out.println("compVisClient.endpoint(): " + compVisClient.endpoint());
                 
-        String imagePath = "C:\\samples\\files\\printed-and-written-text.png";
+        String imagePath = "C:\\Users\\v-lubayl\\Documents\\GitHub\\cognitive-services-samples\\java\\computer-vision\\recognize-text\\src\\main\\resources\\printed-and-written-text.png";
         File rawImage = new File(imagePath);
         
         /*
@@ -28,9 +28,7 @@ public class RecognizeText {
         try {
             byte[] imageBytes = Files.readAllBytes(rawImage.toPath());
             
-            List<VisualFeatureTypes> visualFeatureTypes = new ArrayList<>();
-            visualFeatureTypes.add(VisualFeatureTypes.TAGS);
-            //ImageAnalysis imgAnalysis = compVisClient.computerVision().recognizePrintedTextInStream().withDetectOrientation(false).withImage(imageBytes).withLanguage(OcrLanguages.EN).execute();
+            ImageAnalysis imgAnalysis = compVisClient.computerVision().recognizePrintedTextInStream().withDetectOrientation(false).withImage(imageBytes).withLanguage(OcrLanguages.EN).execute();
     
             System.out.print("Description: ");      
 //            for (ImageTag tag : imgAnalysis.tags()) {
