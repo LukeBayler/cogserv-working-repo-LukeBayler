@@ -18,19 +18,18 @@ This sample code shows you how to moderate images with Content Moderator.
 | File/folder | Description |
 |-------------|-------------|
 | `ImageFiles.txt`       | URLs for the images to moderate. |
-| `ImageModeration.java` | Sample code output. |
-| `ModerationOutput.json`| Sample source code. |
+| `ImageModeration.java` | Java source code. |
+| `ModerationOutput.json`| Program output. |
 | `README.md`            | This README file. |
 
 ## Prerequisites
 
 - Java development environment
-- Jar files required by Content Moderator
 - Maven
 
 ## Setup
 
-- Clone or download this sample repository.
+- [Download this sample repository](https://github.com/LukeBayler/cognitive-services-samples/archive/master.zip).
 
 ## Modifying the Sample for your Configuration
 
