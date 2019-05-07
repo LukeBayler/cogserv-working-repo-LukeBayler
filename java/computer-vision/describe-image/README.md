@@ -11,7 +11,7 @@ products:
 
 # Sample Code for Describing Images with Computer Vision
 
-This sample code shows you how to describe images with Computer Vision.
+This sample code shows you how to describe images with the Computer Vision API.
 
 ## Contents
 
@@ -34,7 +34,9 @@ This sample code shows you how to describe images with Computer Vision.
 
 1. Store your Computer Vision API key in the `AZURE_COMPUTERVISION_API_KEY` environment variable.
 2. Store your Azure endpoint in the `AZURE_ENDPOINT` environment variable.
-3. Place an image file to be desrbied in the `src\main\resources` directory, and name it `describe-image.jpg`.
+3. Find an image file for the Computer Vision API to describe.
+4. Rename the image file `describe-image.jpg`.
+5. Place the image file in the `src\main\resources` directory.
 
 ## Building and Running the Sample
 
