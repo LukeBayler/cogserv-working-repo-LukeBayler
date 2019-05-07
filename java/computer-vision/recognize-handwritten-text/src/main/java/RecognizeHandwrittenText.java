@@ -20,8 +20,7 @@ public class RecognizeHandwrittenText {
                 
         try {
             byte[] imageBytes = Files.readAllBytes(rawImage.toPath());
-            OcrResult ocrResult = compVisClient.computerVision().recognizePrintedTextInStream().withDetectOrientation(true).withImage(imageBytes).withLanguage(OcrLanguages.EN).execute();
-             
+/*            OcrResult ocrResult = compVisClient.computerVision().recognizePrintedTextInStream().withDetectOrientation(true).withImage(imageBytes).withLanguage(OcrLanguages.EN).execute();
             System.out.println("Language: " + ocrResult.language());      
             System.out.println("Orientation: " + ocrResult.orientation());      
             System.out.println("Text angle: " + ocrResult.textAngle());      
@@ -46,7 +45,7 @@ public class RecognizeHandwrittenText {
 
                 System.out.println();
             }
-                 
+*/                 
         } catch (Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();

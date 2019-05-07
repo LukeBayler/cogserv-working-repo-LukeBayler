@@ -9,26 +9,32 @@ import java.util.List;
 
 public class DescribeImage {
 
-    public static void main(String[] args) {
-        String AzureBaseURL = "https://westus.api.cognitive.microsoft.com";
-        String CMSubscriptionKey = "bed9632798b9496bab97d18e31d0fde9";
-        ComputerVisionClient compVisClient = ComputerVisionManager.authenticate(CMSubscriptionKey).withEndpoint(AzureBaseURL);
+    public static void main(String[] args) {  
+
+        //  First command-line argument is the subscription key.
+        String subKey = args[0];
+
+        String baseURL = "https://westus.api.cognitive.microsoft.com";
+        ComputerVisionClient compVisClient = ComputerVisionManager.authenticate(subKey).withEndpoint(baseURL);
         System.out.println("compVisClient.endpoint(): " + compVisClient.endpoint());
         
-        System.out.println("Describing local image...");
+        //System.out.println("Describing local image...");
         
-        String imagePath = "C:\\Users\\v-lubayl\\Documents\\GitHub\\cognitive-services-samples\\java\\computer-vision\\describe-image\\src\\main\\resources\\upside-down-mushroom.jpg";
-        File rawImage = new File(imagePath);
+        //  Path relative to the current working directory (user.dir).
+        //System.out.println(System.getProperty("user.dir"));
+        String imgPath = "src\\main\\resources\\upside-down-mushroom.jpg";
+        
+        File rawImg = new File(imgPath);
         
         try {
-            byte[] imageBytes = Files.readAllBytes(rawImage.toPath());
-            
-            List<VisualFeatureTypes> visualFeatureTypes = new ArrayList<>();
+            byte[] imgBytes = Files.readAllBytes(rawImg.toPath());    
+
+            List<VisualFeatureTypes> visualFeatureTypes = new ArrayList<VisualFeatureTypes>();
             visualFeatureTypes.add(VisualFeatureTypes.DESCRIPTION);
-            ImageAnalysis imgAnalysis = compVisClient.computerVision().analyzeImageInStream().withImage(imageBytes).withVisualFeatures(visualFeatureTypes).execute();
+            ImageAnalysis imgAnalysis = compVisClient.computerVision().analyzeImageInStream().withImage(imgBytes).withVisualFeatures(visualFeatureTypes).execute();
     
-            System.out.print("Description: ");           
-            System.out.println(imgAnalysis.description().captions().get(0).text());
+            System.out.println("\nDescription: ");           
+            System.out.println("\t" + imgAnalysis.description().captions().get(0).text() + "\n");
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
