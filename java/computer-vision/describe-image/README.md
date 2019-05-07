@@ -18,8 +18,8 @@ This sample code shows you how to describe images with the Computer Vision API.
 | File/folder | Description |
 |-------------|-------------|
 | `README.md`            | This README file. |
-| `src\main\java` | Java source file. |
-| `src\main\resources` | Image file to describe. |
+| `src\main\java` | Contains Java source files. |
+| `src\main\resources` | Contains an image file. |
 
 ## Prerequisites
 
@@ -28,7 +28,7 @@ This sample code shows you how to describe images with the Computer Vision API.
 
 ## Setup
 
-- [Download this sample repository](https://github.com/LukeBayler/cognitive-services-samples/archive/master.zip).
+- [Download and extract the sample repository](https://github.com/LukeBayler/cognitive-services-samples/archive/master.zip).
 
 ## Running the sample
 
@@ -40,7 +40,8 @@ This sample code shows you how to describe images with the Computer Vision API.
 
 ## Building and Running the Sample
 
-1. From the command line, navigate to the samples root directory: `...\cognitive-services-samples\java\computer-vision\describe-image`.
+1. Open a command prompt and navigate to the directory where you extracted the sample repository.
+2. Navigate to the subdirectory containing this sample: `cognitive-services-samples\java\computer-vision\describe-image`.
 2. Enter `mvn compile exec:java -Dexec.cleanupDaemonThreads=false`.
 
 ## Next steps
