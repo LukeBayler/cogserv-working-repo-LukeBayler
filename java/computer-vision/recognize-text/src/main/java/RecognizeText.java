@@ -37,8 +37,6 @@ public class RecognizeText {
   //              System.out.println(String.format("%s\t\t%s", tag.name(), tag.confidence()));
     //        }
                  
-//            System.out.println(imgAnalysis.description().captions().get(0).text());
-
         } catch (Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
