@@ -17,7 +17,7 @@ This sample code shows you how to tag visual features in images with Computer Vi
 
 | File/folder | Description |
 |-------------|-------------|
-| `TagVisualImages.java` | Sample code output. |
+| `TagVisualImages.java` | Java source file. |
 | `README.md`            | This README file. |
 
 ## Prerequisites
