@@ -18,7 +18,7 @@ This sample code shows you how to describe images with the Computer Vision API.
 | File/folder | Description |
 |-------------|-------------|
 | `README.md`            | This README file. |
-| `src\main\java` | Contains Java source files. |
+| `src\main\java` | Contains the Java source file. |
 | `src\main\resources` | Contains an image file. |
 
 ## Prerequisites
