@@ -17,7 +17,7 @@ This sample code shows you how to describe images with Computer Vision.
 
 | File/folder | Description |
 |-------------|-------------|
-| `DescribeImage.java` | Sample code output. |
+| `DescribeImage.java` | Java source file. |
 | `README.md`            | This README file. |
 
 ## Prerequisites
