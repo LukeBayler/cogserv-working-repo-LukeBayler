@@ -21,7 +21,7 @@ public class DescribeImage {
         
         //  Path relative to the current working directory (user.dir).
         //System.out.println(System.getProperty("user.dir"));
-        String imgPath = "src\\main\\resources\\upside-down-mushroom.jpg";
+        String imgPath = "src\\main\\resources\\describe-image.jpg";
         
         File rawImg = new File(imgPath);
         

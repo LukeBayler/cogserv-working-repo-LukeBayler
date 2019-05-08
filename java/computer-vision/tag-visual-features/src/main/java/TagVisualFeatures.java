@@ -10,12 +10,14 @@ import java.util.List;
 public class TagVisualFeatures {
 
     public static void main(String[] args) {
-        String AzureBaseURL = "https://westus.api.cognitive.microsoft.com";
-        String CMSubscriptionKey = "bed9632798b9496bab97d18e31d0fde9";
-        ComputerVisionClient compVisClient = ComputerVisionManager.authenticate(CMSubscriptionKey).withEndpoint(AzureBaseURL);
+    
+        String subKey = System.getenv("AZURE_COMPUTERVISION_API_KEY");
+        String baseURL = System.getenv("AZURE_ENDPOINT");
+ 
+        ComputerVisionClient compVisClient = ComputerVisionManager.authenticate(subKey).withEndpoint(baseURL);
         System.out.println("compVisClient.endpoint(): " + compVisClient.endpoint());
                 
-        String imagePath = "C:\\Users\\v-lubayl\\Documents\\GitHub\\cognitive-services-samples\\java\\computer-vision\\tag-visual-features\\src\\main\\resources\\upside-down-mushroom.jpg";
+        String imagePath = "src\\main\\resources\\tag-visual-features.jpg";
         File rawImage = new File(imagePath);
         
         try {
@@ -25,7 +27,7 @@ public class TagVisualFeatures {
             visualFeatureTypes.add(VisualFeatureTypes.TAGS);
             ImageAnalysis imgAnalysis = compVisClient.computerVision().analyzeImageInStream().withImage(imageBytes).withVisualFeatures(visualFeatureTypes).execute();
     
-            System.out.println("Tags : Confidence");      
+            System.out.println("Tags\t\tConfidence");      
             for (ImageTag tag : imgAnalysis.tags()) {
                 System.out.println(String.format("%s\t\t%s", tag.name(), tag.confidence()));
             }
