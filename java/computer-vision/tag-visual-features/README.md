@@ -17,8 +17,9 @@ This sample code shows you how to tag visual features in images with Computer Vi
 
 | File/folder | Description |
 |-------------|-------------|
-| `TagVisualImages.java` | Java source file. |
 | `README.md`            | This README file. |
+| `src\main\java` | Contains the Java source file. |
+| `src\main\resources` | Contains an image file. |
 
 ## Prerequisites
 
@@ -31,9 +32,11 @@ This sample code shows you how to tag visual features in images with Computer Vi
 
 ## Running the sample
 
-1. Update the `AzureBaseURL` string with your region.
-2. Update the `CMSubscriptionKey` with your subscription key.
-3. Update the `imagePath` string representing a file path to a location on your local machine that contains the image with the visual features to be tagged.
+1. Store your Computer Vision API key in the `AZURE_COMPUTERVISION_API_KEY` environment variable.
+2. Store your Azure endpoint in the `AZURE_ENDPOINT` environment variable.
+3. Find an image file for the Computer Vision API to describe.
+4. Rename the image file `tag-visual-images.jpg`.
+5. Place the image file in the `src\main\resources` directory.
 
 ## Building and Running the Sample
 
