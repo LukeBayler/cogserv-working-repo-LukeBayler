@@ -17,10 +17,10 @@ This sample code shows you how to moderate images with Content Moderator.
 
 | File/folder | Description |
 |-------------|-------------|
-| `ImageFiles.txt`       | URLs for the images to moderate. |
-| `ImageModeration.java` | Java source code. |
-| `ModerationOutput.json`| Program output. |
+| `src\main\java` | Java source code. |
 | `README.md`            | This README file. |
+| `src\main\Resources\ImageFiles.txt`       | URLs for the images to moderate. |
+| `src\main\Resources\ModerationOutput.json`| Program output. The sample also writes to standard output. |
 
 ## Prerequisites
 
@@ -33,10 +33,8 @@ This sample code shows you how to moderate images with Content Moderator.
 
 ## Modifying the Sample for your Configuration
 
-1. Update the `AzureBaseURL` string with your region.
-2. Update the `CMSubscriptionKey` with your subscription key.
-3. Update the `ImageUrlFile` string representing a file path to a location on your local machine. This file contains URLs for the images to moderate.
-4. Update the `OutputFile` string representing a file path to a location on your local machine. The sample code writes its output to this file. The sample also writes its output to the standard output stream.
+1. Store your Computer Vision API key in the `AZURE_COMPUTERVISION_API_KEY` environment variable.
+2. Store your Azure endpoint in the `AZURE_ENDPOINT` environment variable.
 
 ## Building and Running the Sample
 
