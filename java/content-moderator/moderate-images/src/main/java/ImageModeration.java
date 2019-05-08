@@ -38,23 +38,20 @@ public class ImageModeration {
      * You will need to create an input file and update this path
      * accordingly. Relative paths are relative to the execution directory.
     */
-    private static String ImageUrlFile = "C:\\Users\\v-lubayl\\Documents\\Github\\cognitive-services-samples\\java\\content-moderator\\moderate-images\\src\\main\\resources\\ImageFiles.txt";
+    private static String ImageUrlFile = "src\\main\\resources\\ImageFiles.txt";
  
     /*
      * The name of the file to contain the output from the evaluation.
      * Relative paths are relative the execution directory.
      */
-    private static String OutputFile = "C:\\Users\\v-lubayl\\Documents\\GitHub\\cognitive-services-samples\\java\\content-moderator\\moderate-images\\src\\main\\resources\\ModerationOutput.json";
+    private static String OutputFile = "src\\main\\resources\\ModerationOutput.json";
 
     public static void main(String[] args) {
     
-        // The base URL fragment for Content Moderator calls.
-        String AzureBaseURL = "https://westus.api.cognitive.microsoft.com";
-
-        // Your Content Moderator subscription key.
-        String CMSubscriptionKey = "bed9632798b9496bab97d18e31d0fde9";
+        String subKey = System.getenv("AZURE_COMPUTERVISION_API_KEY");
+        String baseURL = System.getenv("AZURE_ENDPOINT");
         
-        ContentModeratorClient client = ContentModeratorManager.authenticate(new AzureRegionBaseUrl().fromString(AzureBaseURL), CMSubscriptionKey);
+        ContentModeratorClient client = ContentModeratorManager.authenticate(new AzureRegionBaseUrl().fromString(baseURL), subKey);
         System.out.println("baseUrl(): " + client.baseUrl());
         
         // Create an object in which to store the image moderation results.
