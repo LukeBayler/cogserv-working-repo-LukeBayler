@@ -42,7 +42,7 @@ public class ImageModeration {
  
     /*
      * The name of the file to contain the output from the evaluation.
-     * Relative paths are relative the execution directory.
+     * Relative paths are relative to the execution directory.
      */
     private static String OutputFile = "src\\main\\resources\\ModerationOutput.json";
 
