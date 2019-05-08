@@ -5,7 +5,7 @@
   <groupId>com.microsoft.azure</groupId>
   <artifactId>azure-computervision-sample</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>DescribeImage.java</name>
+  <name>AnalyzeImage.java</name>
   <description></description>
   <url>https://github.com/Azure/bing-search-java</url>
   <properties>
@@ -18,7 +18,7 @@
         <artifactId>exec-maven-plugin</artifactId>
         <version>1.4.0</version>
         <configuration>
-          <mainClass>DescribeImage</mainClass>
+          <mainClass>AnalyzeImage</mainClass>
         </configuration>
       </plugin>
       <plugin>
@@ -44,7 +44,7 @@
               </descriptorRefs>
               <archive>
                 <manifest>
-                  <mainClass>DescribeImage</mainClass>
+                  <mainClass>AnalyzeImage</mainClass>
                 </manifest>
               </archive>
             </configuration>

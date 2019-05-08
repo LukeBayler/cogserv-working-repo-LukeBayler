@@ -9,9 +9,9 @@ products:
   - Computer Vision
 ---
 
-# Sample Code for Describing Images with Computer Vision
+# Sample Code for Analyzing Images with Computer Vision
 
-This sample code shows you how to describe images with the Computer Vision API.
+This sample code shows you how to analyze images with the Computer Vision API.
 
 ## Contents
 
@@ -35,15 +35,15 @@ This sample code shows you how to describe images with the Computer Vision API.
 1. Store your Computer Vision API key in the `AZURE_COMPUTERVISION_API_KEY` environment variable.
 2. Store your Azure endpoint in the `AZURE_ENDPOINT` environment variable.
 3. Find an image file for the Computer Vision API to describe.
-4. Rename the image file `describe-image.jpg`.
+4. Rename the image file `analyze-image.jpg`.
 5. Place the image file in the `src\main\resources` directory.
 
 ## Building and Running the Sample
 
 1. Open a command prompt and navigate to the directory where you extracted the sample repository.
-2. Navigate to the subdirectory containing this sample, which is: `cognitive-services-samples\java\computer-vision\describe-image`.
+2. Navigate to the subdirectory containing this sample, which is: `cognitive-services-samples\java\computer-vision\analyze-image`.
 2. Enter `mvn compile exec:java -Dexec.cleanupDaemonThreads=false`.
 
 ## Next steps
 
-For more information about describing images with the Computer Vision API, visit the [official documentation site](https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/concept-describing-images).
+For more information about analyzing images with the Computer Vision API, visit the [official documentation site](https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/home#analyze-images-for-insight).

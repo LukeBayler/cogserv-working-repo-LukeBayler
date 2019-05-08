@@ -7,7 +7,7 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DescribeImage {
+public class AnalyzeImage {
 
     public static void main(String[] args) {  
 
@@ -17,11 +17,11 @@ public class DescribeImage {
         ComputerVisionClient compVisClient = ComputerVisionManager.authenticate(subKey).withEndpoint(baseURL);
         System.out.println("compVisClient.endpoint(): " + compVisClient.endpoint());
         
-        //System.out.println("Describing local image...");
+        //System.out.println("Analyzing local image...");
         
         //  Path relative to the current working directory (user.dir).
         //System.out.println(System.getProperty("user.dir"));
-        String imgPath = "src\\main\\resources\\describe-image.jpg";
+        String imgPath = "src\\main\\resources\\analyze-image.jpg";
         
         File rawImg = new File(imgPath);
         
