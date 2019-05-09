@@ -10,8 +10,8 @@ import java.util.List;
 public class RecognizePrintedText {
 
     public static void main(String[] args) {
-        String AzureBaseURL = "https://westus.api.cognitive.microsoft.com";
-        String CVSubscriptionKey = "bed9632798b9496bab97d18e31d0fde9";
+        public static String subKey = System.getenv("AZURE_COMPUTERVISION_API_KEY");
+        public static String baseURL = System.getenv("AZURE_ENDPOINT");
         ComputerVisionClient compVisClient = ComputerVisionManager.authenticate(CVSubscriptionKey).withEndpoint(AzureBaseURL);
         //System.out.println("compVisClient.endpoint(): " + compVisClient.endpoint());
                 
