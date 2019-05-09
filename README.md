@@ -4,8 +4,7 @@ Below is a list representation of the directory structure and the samples within
 - Java
     - Computer Vision
         - Describe Image
-        - Recognize Handwritten Text
-        - Recognize Printed Text
+        - Detect Image Type
         - Tag Visual Features
     - Content Moderator
         - Moderate Images
