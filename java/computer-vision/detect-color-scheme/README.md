@@ -9,9 +9,9 @@ products:
   - Computer Vision
 ---
 
-# Sample Code for Tagging Visual Features with Computer Vision
+# Sample Code for Detecting Color Schemes with Computer Vision
 
-This sample code shows you how to tag visual features with the Computer Vision API.
+This sample code shows you how to detect color schemes with the Computer Vision API.
 
 ## Contents
 
@@ -46,4 +46,4 @@ This sample code shows you how to tag visual features with the Computer Vision A
 
 ## Next steps
 
-For more information about tagging visual features with the Computer Vision API, visit the [official documentation site](https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/concept-tagging-images).
+For more information about detecting color schemes with the Computer Vision API, visit the [official documentation site](https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/concept-detecting-color-schemes.
