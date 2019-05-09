@@ -4,6 +4,7 @@ Below is a list representation of the directory structure and the samples within
 - Java
     - Computer Vision
         - Analyze Image
+        - Categorize Image
         - Detect Color Scheme
         - Detect Image Type
         - Tag Visual Features
