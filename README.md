@@ -5,6 +5,7 @@ Below is a list representation of the directory structure and the samples within
     - Computer Vision
         - Analyze Image
         - Categorize Image
+        - Detect Domain-Specific Content
         - Detect Color Scheme
         - Detect Image Type
         - Tag Visual Features
