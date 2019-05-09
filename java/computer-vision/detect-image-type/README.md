@@ -9,9 +9,9 @@ products:
   - Computer Vision
 ---
 
-# Sample Code for Tagging Visual Features with Computer Vision
+# Sample Code for Detecting Image Type with Computer Vision
 
-This sample code shows you how to tag visual features with the Computer Vision API.
+This sample code shows you how to detect image type with the Computer Vision API.
 
 ## Contents
 
@@ -46,4 +46,4 @@ This sample code shows you how to tag visual features with the Computer Vision A
 
 ## Next steps
 
-For more information about tagging visual features with the Computer Vision API, visit the [official documentation site](https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/concept-tagging-images).
+For more information about detecting image types with the Computer Vision API, visit the [official documentation site](https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/concept-detecting-image-types).
