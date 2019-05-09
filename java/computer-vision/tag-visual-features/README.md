@@ -9,9 +9,9 @@ products:
   - Computer Vision
 ---
 
-# Sample Code for Tagging Visual Features in Images with Computer Vision
+# Sample Code for Tagging Visual Features with Computer Vision
 
-This sample code shows you how to tag visual features in images with Computer Vision.
+This sample code shows you how to tag visual features with the Computer Vision API.
 
 ## Contents
 
@@ -28,22 +28,22 @@ This sample code shows you how to tag visual features in images with Computer Vi
 
 ## Setup
 
-- [Download this sample repository](https://github.com/LukeBayler/cognitive-services-samples/archive/master.zip).
+- [Download and extract the sample repository](https://github.com/LukeBayler/cognitive-services-samples/archive/master.zip).
 
 ## Running the sample
 
 1. Store your Computer Vision API key in the `AZURE_COMPUTERVISION_API_KEY` environment variable.
 2. Store your Azure endpoint in the `AZURE_ENDPOINT` environment variable.
 3. Find an image file for the Computer Vision API to describe.
-4. Rename the image file `tag-visual-images.jpg`.
+4. Rename the image file `analyze-image.jpg`.
 5. Place the image file in the `src\main\resources` directory.
 
 ## Building and Running the Sample
 
-1. From the command line, navigate to the samples root directory: `...\cognitive-services-samples\java\computer-vision\tag-visual-features`.
+1. Open a command prompt and navigate to the directory where you extracted the sample repository.
+2. Navigate to the subdirectory containing this sample, which is: `cognitive-services-samples\java\computer-vision\analyze-image`.
 2. Enter `mvn compile exec:java -Dexec.cleanupDaemonThreads=false`.
 
 ## Next steps
 
-You can learn more about tagging visual features in images with Computer Vision at the [official documentation site](https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/concept-tagging-images).
-
+For more information about tagging visual features with the Computer Vision API, visit the [official documentation site](https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/concept-tagging-images.

@@ -39,8 +39,10 @@ public class AnalyzeImage {
             features.add(VisualFeatureTypes.COLOR);
             features.add(VisualFeatureTypes.IMAGE_TYPE);
             
-            System.out.println("Analyzing image ...");
+            System.out.println("\nAnalyzing local image ...");
             AnalyzeLocal(compVisClient, imgPath, features);
+            
+            System.out.println("\nAnalyzing image from URL ...");
             AnalyzeFromUrl(compVisClient, remotePath, features);
         }
         
@@ -122,7 +124,7 @@ public class AnalyzeImage {
        private static void DisplayAdultResults(ImageAnalysis analysis) {
             System.out.println("\nAdult: ");
             System.out.printf("Is adult content: %b with confidence %f\n", analysis.adult().isAdultContent(), analysis.adult().adultScore());
-            System.out.printf("Has racy content: %b with confidence %f\n\n", analysis.adult().isRacyContent(), analysis.adult().racyScore());
+            System.out.printf("Has racy content: %b with confidence %f\n", analysis.adult().isRacyContent(), analysis.adult().racyScore());
         }
         
         private static void DisplayColorSchemeResults(ImageAnalysis analysis) {
