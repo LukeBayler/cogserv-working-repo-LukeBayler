@@ -9,16 +9,17 @@ products:
   - Computer Vision
 ---
 
-# Sample Code for Recognizing Printed Text with Computer Vision
+# Sample Code for Recognizing Handwritten and Printed Text using OCR with Computer Vision
 
-This sample code shows you how to recognize printed text with Computer Vision.
+This sample code shows you how to recognize handwritten and printed text using OCR with the Computer Vision API.
 
 ## Contents
 
 | File/folder | Description |
 |-------------|-------------|
-| `RecognizePrintedText.java` | Java source file. |
 | `README.md`            | This README file. |
+| `src\main\java` | Contains the Java source file. |
+| `src\main\resources` | Contains an image file. |
 
 ## Prerequisites
 
@@ -27,19 +28,22 @@ This sample code shows you how to recognize printed text with Computer Vision.
 
 ## Setup
 
-- [Download this sample repository](https://github.com/LukeBayler/cognitive-services-samples/archive/master.zip).
+- [Download and extract the sample repository](https://github.com/LukeBayler/cognitive-services-samples/archive/master.zip).
 
 ## Running the sample
 
-1. Update the `AzureBaseURL` string with your region.
-2. Update the `CMSubscriptionKey` with your subscription key.
-3. Update the `imagePath` string representing a file path to a location on your local machine that contains the image with printed text.
+1. Store your Computer Vision API key in the `AZURE_COMPUTERVISION_API_KEY` environment variable.
+2. Store your Azure endpoint in the `AZURE_ENDPOINT` environment variable.
+3. Find an image file for the Computer Vision API to describe.
+4. Rename the image file `analyze-image.jpg`.
+5. Place the image file in the `src\main\resources` directory.
 
 ## Building and Running the Sample
 
-1. From the command line, navigate to the samples root directory: `...\cognitive-services-samples\java\computer-vision\recognize-printed-text`.
+1. Open a command prompt and navigate to the directory where you extracted the sample repository.
+2. Navigate to the subdirectory containing this sample, which is: `cognitive-services-samples\java\vision\recognize-text-ocr\analyze-image`.
 2. Enter `mvn compile exec:java -Dexec.cleanupDaemonThreads=false`.
 
 ## Next steps
 
-You can learn more about recognizing printed text with Computer Vision at the [official documentation site](https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/concept-recognizing-text).
+For more information about recognizing handwritten and printed text using OCR with the Computer Vision API, visit the [official documentation site](https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/concept-recognizing-text#ocr-optical-character-recognition-api).

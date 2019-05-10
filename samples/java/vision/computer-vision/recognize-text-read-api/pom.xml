@@ -5,7 +5,7 @@
   <groupId>com.microsoft.azure</groupId>
   <artifactId>azure-computervision-sample</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>RecognizeText.java</name>
+  <name>RecognizeTextReadAPI.java</name>
   <description></description>
   <url>https://github.com/Azure/bing-search-java</url>
   <properties>
@@ -18,7 +18,7 @@
         <artifactId>exec-maven-plugin</artifactId>
         <version>1.4.0</version>
         <configuration>
-          <mainClass>RecognizePrintedText</mainClass>
+          <mainClass>RecognizeTextReadAPI</mainClass>
         </configuration>
       </plugin>
       <plugin>
@@ -43,7 +43,7 @@
               </descriptorRefs>
               <archive>
                 <manifest>
-                  <mainClass>RecognizePrintedText</mainClass>
+                  <mainClass>RecognizeTextReadAPI</mainClass>
                 </manifest>
               </archive>
             </configuration>
