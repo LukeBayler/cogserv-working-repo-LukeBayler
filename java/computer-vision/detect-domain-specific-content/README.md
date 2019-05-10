@@ -41,7 +41,7 @@ This sample code shows you how to detect domain-specific content, such as celebr
 ## Building and Running the Sample
 
 1. Open a command prompt and navigate to the directory where you extracted the sample repository.
-2. Navigate to the subdirectory containing this sample, which is: `cognitive-services-samples\java\computer-vision\detecting-domain-specific-content`.
+2. Navigate to the subdirectory containing this sample, which is: `cognitive-services-samples\java\computer-vision\detect-domain-specific-content`.
 2. Enter `mvn compile exec:java -Dexec.cleanupDaemonThreads=false`.
 
 ## Next steps
