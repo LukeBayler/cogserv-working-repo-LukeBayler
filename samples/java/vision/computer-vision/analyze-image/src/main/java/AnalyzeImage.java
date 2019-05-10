@@ -27,7 +27,7 @@ public class AnalyzeImage {
         
             ComputerVisionClient compVisClient = ComputerVisionManager.authenticate(key).withEndpoint(url);
         
-            String imgPath = "src\\main\\resources\\analyze-image.jpg";
+            String imgPath = "src\\main\\resources\\landmark.jpg";
             String remotePath = "https://github.com/Azure-Samples/cognitive-services-sample-data-files/raw/master/ComputerVision/Images/landmark.jpg";
         
             List<VisualFeatureTypes> features = new ArrayList<>();

@@ -7,20 +7,27 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecognizeHandwrittenText {
+public class RecognizePrintedText {
+    public static String subKey = System.getenv("AZURE_COMPUTERVISION_API_KEY");
+    public static String baseURL = System.getenv("AZURE_ENDPOINT");
 
     public static void main(String[] args) {
-        String subKey = System.getenv("AZURE_COMPUTERVISION_API_KEY");
-        String baseURL = System.getenv("AZURE_ENDPOINT");
-        ComputerVisionClient compVisClient = ComputerVisionManager.authenticate(subKey).withEndpoint(baseURL);
-        //System.out.println("compVisClient.endpoint(): " + compVisClient.endpoint());
-                
-        String imagePath = "C:\\Users\\v-lubayl\\Documents\\GitHub\\cognitive-services-samples\\java\\computer-vision\\recognize-handwritten-text\\src\\main\\resources\\recognize-this.jpg";
-        File rawImage = new File(imagePath);
-                
         try {
+            AnalyzeImageSample.RunSample(baseURL, subKey);
+            
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+}
+
+
+
+/*        try {
             byte[] imageBytes = Files.readAllBytes(rawImage.toPath());
-/*            OcrResult ocrResult = compVisClient.computerVision().recognizePrintedTextInStream().withDetectOrientation(true).withImage(imageBytes).withLanguage(OcrLanguages.EN).execute();
+            OcrResult ocrResult = compVisClient.computerVision().recognizePrintedTextInStream().withDetectOrientation(true).withImage(imageBytes).withLanguage(OcrLanguages.EN).execute();
+             
             System.out.println("Language: " + ocrResult.language());      
             System.out.println("Orientation: " + ocrResult.orientation());      
             System.out.println("Text angle: " + ocrResult.textAngle());      
@@ -45,10 +52,9 @@ public class RecognizeHandwrittenText {
 
                 System.out.println();
             }
-*/                 
+                 
         } catch (Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
-    }
-}
+*/
