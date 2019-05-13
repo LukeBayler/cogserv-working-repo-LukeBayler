@@ -19,7 +19,7 @@ public class ComputerVisionQuickstarts
     {
         String subKey = System.getenv("AZURE_COMPUTERVISION_API_KEY");
         String region = System.getenv("AZURE_REGION");
-        String endpoint = "https://" + region + ".api.cognitive.microsoft.com";
+        String endpoint = ("https://").concat(region).concat(".api.cognitive.microsoft.com");
         
         //  use a Java concat method here like in the Chris's C# sample, so only store the region in the environment variable
     
