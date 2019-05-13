@@ -17,50 +17,146 @@ public class ComputerVisionQuickstarts
     
     public static void RunQuickstarts()
     {
-        String subKey = System.getenv("AZURE_COMPUTERVISION_API_KEY");
-        String region = System.getenv("AZURE_REGION");
-        String endpoint = ("https://").concat(region).concat(".api.cognitive.microsoft.com");
+        /*  Configure the local environment:
+         *
+         *  Set the AZURE_COMPUTERVISION_API_KEY and AZURE_REGION environment variables on your
+         *  local machine using the appropriate method for your preferred command shell.
+         *
+         *  For AZURE_REGION, use the same region you used to get your subscription keys.
+         ***Can we link to docs for the regions?
+         *
+         *  Note that environment variables cannot contain quotation marks, so the quotation marks
+         *  are included in the code below to stringify them.
+         *  
+         *  Note that after setting these environment variables in your preferred command shell,
+         *  you will need to close and then re-open your command shell.  
+         */
+
+        String azureComputerVisionApiKey = System.getenv("AZURE_COMPUTERVISION_API_KEY");
+        String azureRegion = System.getenv("AZURE_REGION");
+        //  END - Configure the local environment.
         
-        //  use a Java concat method here like in the Chris's C# sample, so only store the region in the environment variable
-    
-        ComputerVisionClient compVisClient = ComputerVisionManager.authenticate(subKey).withEndpoint(endpoint);
-    
-        String imgPath = "src\\main\\resources\\landmark.jpg";
-        String remotePath = "https://github.com/Azure-Samples/cognitive-services-sample-data-files/raw/master/ComputerVision/Images/landmark.jpg";
-    
-        List<VisualFeatureTypes> features = new ArrayList<>();
-        features.add(VisualFeatureTypes.DESCRIPTION);
-        features.add(VisualFeatureTypes.CATEGORIES);
-        features.add(VisualFeatureTypes.TAGS);
-        features.add(VisualFeatureTypes.FACES);
-        features.add(VisualFeatureTypes.ADULT);
-        features.add(VisualFeatureTypes.COLOR);
-        features.add(VisualFeatureTypes.IMAGE_TYPE);
         
-        System.out.println("\nAnalyzing local image ...");
-        AnalyzeLocal(compVisClient, imgPath, features);
+        /*  Create an authenticated Computer Vision client:
+         *  
+         *  Concatenate the Azure region with the Azure base URL to create the endpoint URL, and
+         *  then create an authenticated client with the API key and the endpoint URL.
+         */
         
-        System.out.println("\nAnalyzing image from URL ...");
-        AnalyzeFromUrl(compVisClient, remotePath, features);
-    }
+        String endpointUrl = ("https://").concat(azureRegion).concat(".api.cognitive.microsoft.com");
+        ComputerVisionClient compVisClient = ComputerVisionManager.authenticate(azureComputerVisionApiKey).withEndpoint(endpointUrl);
+        //  END - Create an authenticated Computer Vision client.
     
-    private static void AnalyzeLocal(ComputerVisionClient client, String path, List<VisualFeatureTypes> feats) {
-        try {
-            File rawImg = new File(path);
+    
+        /*  Analyze a local image:
+         *  
+         *  Set a string variable equal to the path of a local image. The image path below is a relative path.  
+         */
+        String pathToLocalImage = "src\\main\\resources\\landmark.jpg";
+//        String remotePath = "https://github.com/Azure-Samples/cognitive-services-sample-data-files/raw/master/ComputerVision/Images/landmark.jpg";
+    
+        //  This list defines the features to be extracted from the image. 
+        List<VisualFeatureTypes> featuresToExtractFromImage = new ArrayList<>();
+        featuresToExtractFromImage.add(VisualFeatureTypes.DESCRIPTION);
+        featuresToExtractFromImage.add(VisualFeatureTypes.CATEGORIES);
+        featuresToExtractFromImage.add(VisualFeatureTypes.TAGS);
+        featuresToExtractFromImage.add(VisualFeatureTypes.FACES);
+        featuresToExtractFromImage.add(VisualFeatureTypes.ADULT);
+        featuresToExtractFromImage.add(VisualFeatureTypes.COLOR);
+        featuresToExtractFromImage.add(VisualFeatureTypes.IMAGE_TYPE);
+        
+        System.out.println("\nAnalyzing local image ...");       
+        
+        try
+        {
+            File rawImg = new File(pathToLocalImage);
             byte[] imgBytes = Files.readAllBytes(rawImg.toPath());
-            
-            ImageAnalysis analysis = client.computerVision().analyzeImageInStream()
+        
+            ImageAnalysis analysis = compVisClient.computerVision().analyzeImageInStream()
                 .withImage(imgBytes)
-                .withVisualFeatures(feats)
+                .withVisualFeatures(featuresToExtractFromImage)
                 .execute();
+        
             
-            DisplayResults(analysis, path);
+            System.out.println("\nCaptions: ");
+            for (ImageCaption caption : analysis.description().captions()) {
+                System.out.printf("\'%s\' with confidence %f\n", caption.text(), caption.confidence());
+            }
             
-        } catch (Exception e) {
+            System.out.println("\nCategories: ");
+            for (Category category : analysis.categories()) {
+                System.out.printf("\'%s\' with confidence %f\n", category.name(), category.score());
+            }
+
+            System.out.println("\nTags: ");
+            for (ImageTag tag : analysis.tags()) {
+                System.out.printf("\'%s\' with confidence %f\n", tag.name(), tag.confidence());
+            }           
+            
+            /*  Switch to an image with faces so we get a result.
+             *
+             */
+            System.out.println("\nFaces: ");
+            for (FaceDescription face : analysis.faces()) {
+                System.out.printf("\'%s\' of age %d at location (%d, %d), (%d, %d)\n", face.gender(), face.age(),
+                    face.faceRectangle().left(), face.faceRectangle().top(),
+                    face.faceRectangle().left() + face.faceRectangle().width(),
+                    face.faceRectangle().top() + face.faceRectangle().height());
+            }            
+
+
+            System.out.println("\nAdult: ");
+            System.out.printf("Is adult content: %b with confidence %f\n", analysis.adult().isAdultContent(), analysis.adult().adultScore());
+            System.out.printf("Has racy content: %b with confidence %f\n", analysis.adult().isRacyContent(), analysis.adult().racyScore());
+
+
+            System.out.println("\nColor scheme: ");
+            System.out.println("Is black and white: " + analysis.color().isBWImg());
+            System.out.println("Accent color: " + analysis.color().accentColor());
+            System.out.println("Dominant background color: " + analysis.color().dominantColorBackground());
+            System.out.println("Dominant foreground color: " + analysis.color().dominantColorForeground());
+            System.out.println("Dominant colors: " + String.join(", ", analysis.color().dominantColors()));
+
+
+            System.out.println("\nCelebrities: ");
+            for (Category category : analysis.categories())
+            {
+                if (category.detail() != null && category.detail().celebrities() != null)
+                {
+                    for (CelebritiesModel celeb : category.detail().celebrities())
+                    {
+                        System.out.printf("\'%s\' with confidence %f at location (%d, %d), (%d, %d)\n", celeb.name(), celeb.confidence(),
+                            celeb.faceRectangle().left(), celeb.faceRectangle().top(),
+                            celeb.faceRectangle().left() + celeb.faceRectangle().width(),
+                            celeb.faceRectangle().top() + celeb.faceRectangle().height());
+                    }
+                }
+            }
+            
+            System.out.println("\nLandmarks: ");
+            for (Category category : analysis.categories())
+            {
+                if (category.detail() != null && category.detail().landmarks() != null)
+                {
+                    for (LandmarksModel landmark : category.detail().landmarks())
+                    {
+                        System.out.printf("\'%s\' with confidence %f\n", landmark.name(), landmark.confidence());
+                    }
+                }
+            }
+
+
+            System.out.println("\nImage type:");
+            System.out.println("Clip art type: " + analysis.imageType().clipArtType());
+            System.out.println("Line drawing type: " + analysis.imageType().lineDrawingType());
+        }
+        
+        catch (Exception e)
+        {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
-    }
+}
     
     private static void AnalyzeFromUrl(ComputerVisionClient client, String path, List<VisualFeatureTypes> feats) {
         try {
@@ -69,104 +165,9 @@ public class ComputerVisionQuickstarts
                 .withVisualFeatures(feats)
                 .execute();
             
-            DisplayResults(analysis, path);
-
         } catch (Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
-    }
-    
-    private static void DisplayResults(ImageAnalysis analysis, String path) {
-        DisplayImageDescription(analysis);
-        DisplayImageCategoryResults(analysis);
-        DisplayTagResults(analysis);
-        DisplayFaceResults(analysis);
-        DisplayAdultResults(analysis);
-        DisplayColorSchemeResults(analysis);
-        DisplayDomainSpecificResults(analysis);
-        DisplayImageTypeResults(analysis);
-    }
-    
-    private static void DisplayImageDescription(ImageAnalysis analysis) {
-        System.out.println("\nCaptions: ");
-        for (ImageCaption caption : analysis.description().captions()) {
-            System.out.printf("\'%s\' with confidence %f\n", caption.text(), caption.confidence());
-        }
-    }
-    
-    private static void DisplayImageCategoryResults(ImageAnalysis analysis) {
-        System.out.println("\nCategories: ");
-        for (Category category : analysis.categories()) {
-            System.out.printf("\'%s\' with confidence %f\n", category.name(), category.score());
-        }
-    }
-    
-    private static void DisplayTagResults(ImageAnalysis analysis) {
-        System.out.println("\nTags: ");
-        for (ImageTag tag : analysis.tags()) {
-            System.out.printf("\'%s\' with confidence %f\n", tag.name(), tag.confidence());
-        }
-    }
-
-    private static void DisplayFaceResults(ImageAnalysis analysis) {
-        System.out.println("\nFaces: ");
-        for (FaceDescription face : analysis.faces()) {
-            System.out.printf("\'%s\' of age %d at location (%d, %d), (%d, %d)\n", face.gender(), face.age(),
-                face.faceRectangle().left(), face.faceRectangle().top(),
-                face.faceRectangle().left() + face.faceRectangle().width(),
-                face.faceRectangle().top() + face.faceRectangle().height());
-        }
-    }
-
-   private static void DisplayAdultResults(ImageAnalysis analysis) {
-        System.out.println("\nAdult: ");
-        System.out.printf("Is adult content: %b with confidence %f\n", analysis.adult().isAdultContent(), analysis.adult().adultScore());
-        System.out.printf("Has racy content: %b with confidence %f\n", analysis.adult().isRacyContent(), analysis.adult().racyScore());
-    }
-    
-    private static void DisplayColorSchemeResults(ImageAnalysis analysis) {
-        System.out.println("\nColor scheme: ");
-        System.out.println("Is black and white: " + analysis.color().isBWImg());
-        System.out.println("Accent color: " + analysis.color().accentColor());
-        System.out.println("Dominant background color: " + analysis.color().dominantColorBackground());
-        System.out.println("Dominant foreground color: " + analysis.color().dominantColorForeground());
-        System.out.println("Dominant colors: " + String.join(", ", analysis.color().dominantColors()));
-    }
-    
-    private static void DisplayDomainSpecificResults(ImageAnalysis analysis)
-    {
-        System.out.println("\nCelebrities: ");
-        for (Category category : analysis.categories())
-        {
-            if (category.detail() != null && category.detail().celebrities() != null)
-            {
-                for (CelebritiesModel celeb : category.detail().celebrities())
-                {
-                    System.out.printf("\'%s\' with confidence %f at location (%d, %d), (%d, %d)\n", celeb.name(), celeb.confidence(),
-                        celeb.faceRectangle().left(), celeb.faceRectangle().top(),
-                        celeb.faceRectangle().left() + celeb.faceRectangle().width(),
-                        celeb.faceRectangle().top() + celeb.faceRectangle().height());
-                }
-            }
-        }
-        
-        System.out.println("\nLandmarks: ");
-        for (Category category : analysis.categories())
-        {
-            if (category.detail() != null && category.detail().landmarks() != null)
-            {
-                for (LandmarksModel landmark : category.detail().landmarks())
-                {
-                    System.out.printf("\'%s\' with confidence %f\n", landmark.name(), landmark.confidence());
-                }
-            }
-        }
-    }
-    
-    private static void DisplayImageTypeResults(ImageAnalysis analysis) {
-        System.out.println("\nImage type:");
-        System.out.println("Clip art type: " + analysis.imageType().clipArtType());
-        System.out.println("Line drawing type: " + analysis.imageType().lineDrawingType());
     }
 }
