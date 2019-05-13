@@ -5,7 +5,7 @@
   <groupId>com.microsoft.azure</groupId>
   <artifactId>azure-computervision-sample</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>ComputerVisionQuickstart.java</name>
+  <name>ComputerVisionQuickstarts.java</name>
   <description></description>
   <url>https://github.com/Azure/bing-search-java</url>
   <properties>
@@ -18,7 +18,7 @@
         <artifactId>exec-maven-plugin</artifactId>
         <version>1.4.0</version>
         <configuration>
-          <mainClass>ComputerVisionQuickstart</mainClass>
+          <mainClass>ComputerVisionQuickstarts</mainClass>
         </configuration>
       </plugin>
       <plugin>
@@ -44,7 +44,7 @@
               </descriptorRefs>
               <archive>
                 <manifest>
-                  <mainClass>ComputerVisionQuickstart</mainClass>
+                  <mainClass>ComputerVisionQuickstarts</mainClass>
                 </manifest>
               </archive>
             </configuration>
