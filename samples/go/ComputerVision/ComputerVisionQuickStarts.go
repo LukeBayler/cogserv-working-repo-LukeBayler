@@ -1222,3 +1222,4 @@ func RecognizeTextOCRRemoteImage(client computervision.BaseClient, remoteImageUR
   }
 }
 //	END - Recognize text with OCR in a remote image
+
