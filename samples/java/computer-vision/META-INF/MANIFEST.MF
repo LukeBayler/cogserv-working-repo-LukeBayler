@@ -1,0 +1,221 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Built-By: paresin
+Created-By: Apache Maven 3.6.0
+Build-Jdk: 1.8.0_202
+
+Name: com/microsoft/rest/serializer/AdditionalPropertiesDeserializer$1
+ .class
+SHA-256-Digest: lwajzWJPgA7qAX7pJr179n6reoHlU+eJxr08layGu4I=
+
+Name: com/microsoft/rest/retry/RetryHandler.class
+SHA-256-Digest: cd+WUuUIoVfoK4VnKp1hdQuBIL+2TK9R1GF+oo2R1A8=
+
+Name: com/microsoft/rest/ServiceFuture$3.class
+SHA-256-Digest: ygyMRDRHuC7kLwztzCJqNZLajRylYdPT9KmDyqD5zVI=
+
+Name: com/microsoft/rest/RestClient$1.class
+SHA-256-Digest: NDrhlhOq2+ZAldTqWwuMyDiPXtW2AvxKs30WOYVQI8A=
+
+Name: com/microsoft/rest/serializer/DateTimeRfc1123Serializer.class
+SHA-256-Digest: MXzKFbFT0Nk1a/K+9Se0lboDF9cr8WXdpjAoLwNdQbA=
+
+Name: com/microsoft/rest/serializer/JsonFlatten.class
+SHA-256-Digest: fBiPEuHUywqqt242f6rzXSSu6ML6HzitEm6ZWMMhZmI=
+
+Name: com/microsoft/rest/interceptors/CustomHeadersInterceptor.class
+SHA-256-Digest: okdfmwblyEwLfCauZ8AiubeNP3KIlGqUZDdkQ+Ju07g=
+
+Name: com/microsoft/rest/serializer/Base64UrlSerializer.class
+SHA-256-Digest: 8iqQQpfR304wpjB51o8rtpRMDFfGpiLN8pqtjSoTTaU=
+
+Name: com/microsoft/rest/serializer/JacksonConverterFactory$JacksonRes
+ ponseBodyConverter.class
+SHA-256-Digest: Psaol2NTnO00J7XL2ziJV9S5WpxFIu68VEfF24TTHyc=
+
+Name: com/microsoft/rest/ServiceResponseBuilder$1.class
+SHA-256-Digest: muvJiiI3630PIOvePiJ33oWacUGy/jA7yJ7fkXTfpCY=
+
+Name: com/microsoft/rest/ServiceResponseBuilder$Factory.class
+SHA-256-Digest: 6txbr8H96su8gW1U99USJ8/LPhFD8sRZrKrhkkt9bWA=
+
+Name: com/microsoft/rest/ServiceResponseWithHeaders.class
+SHA-256-Digest: 0AMNR8AoORA6Dx59SUa+rcLlGxTRLN/5xl2RxK0THRI=
+
+Name: com/microsoft/rest/ExpandableStringEnum.class
+SHA-256-Digest: kwOYwB4eG/bSs/dRvT7hH3Itw02czlMfWZUqef9vfFs=
+
+Name: com/microsoft/rest/credentials/TokenCredentials.class
+SHA-256-Digest: yQEgjbIkyI6v2cztLuc1U6LBycz/I0dyrwanj8qDN30=
+
+Name: com/microsoft/rest/ServiceFuture$7.class
+SHA-256-Digest: tO40SR4FrX0curlCLmmeGFojGGGDg24Bh9MdILPyxe4=
+
+Name: com/microsoft/rest/credentials/TokenCredentialsInterceptor.class
+SHA-256-Digest: EYx39/X3w72jbQURn7vY40HItTKAKoQezCRGMOiit1E=
+
+Name: com/microsoft/rest/Validator.class
+SHA-256-Digest: 1fl/X4BDs8Qi8o1stqob8VdG+bNDhcKTt0la/LImPUc=
+
+Name: com/microsoft/rest/credentials/BasicAuthenticationCredentials.cl
+ ass
+SHA-256-Digest: OX9DOq2PRoOonReVmXM4mvYaOLrQdnwWtiePPUs++8w=
+
+Name: com/microsoft/rest/ServiceResponseBuilder$2.class
+SHA-256-Digest: yxrOhFuSjAECll2viCGJJzsvwCrtyprkZefl4plcYGo=
+
+Name: com/microsoft/rest/protocol/ResponseBuilder$Factory.class
+SHA-256-Digest: QtjUq6ziRMF5r7hvSMVlljkqHHv+UXVPyn3Ic187x74=
+
+Name: com/microsoft/rest/RestClient$Builder.class
+SHA-256-Digest: pwcgmfQPGsbU0dJFnRgurru3xuoeSWKcEazr5KAENcs=
+
+Name: com/microsoft/rest/serializer/JacksonAdapter.class
+SHA-256-Digest: GD+C309XeOIlbL1LIfiKnagmVBty5F/RU013EAN3CHY=
+
+Name: com/microsoft/rest/ServiceFuture$10.class
+SHA-256-Digest: bmVGI6CxBoYJ5QSPOxHonAV8BtuNcoQzImcod9GBbR8=
+
+Name: com/microsoft/rest/ServiceFuture$9.class
+SHA-256-Digest: tlMpzxb6mZNp5sIFj7KMFSmwHKneAm2yb4mhKw86cSg=
+
+Name: com/microsoft/rest/serializer/FlatteningDeserializer$1.class
+SHA-256-Digest: sFaiHJM+qBpTz77gCvDdVfC6twG8pi3mb/5v1hhupZI=
+
+Name: com/microsoft/rest/protocol/Environment.class
+SHA-256-Digest: Wz8LJuEBwJ1nHQ7pejpEG7rRp8Gg+y89rIyS+1dCfqA=
+
+Name: com/microsoft/rest/serializer/AdditionalPropertiesSerializer$1.c
+ lass
+SHA-256-Digest: bYByzqa1U/uAaJRrq4IuuBTSwxd036BvprIwuIwwZEU=
+
+Name: com/microsoft/rest/serializer/JacksonConverterFactory.class
+SHA-256-Digest: UmBrS+2w/bHonDBCMesrxA8XYkP8m9JxwhHNV/GnYWE=
+
+Name: com/microsoft/rest/serializer/AdditionalPropertiesDeserializer.c
+ lass
+SHA-256-Digest: lDSJ8HUS2yyDwf157TYpZx4fweHOjU8K5WmosHL8qg8=
+
+Name: com/microsoft/rest/DateTimeRfc1123.class
+SHA-256-Digest: Bjm9OAqj02n+meUAErTaQ8vVhiN/iXUrlm53ckEP/c8=
+
+Name: com/microsoft/rest/ServiceResponse.class
+SHA-256-Digest: Sit60ILNpeiu0XMPCgBTEN90tJ+bV0MUBnJOdKluYx8=
+
+Name: com/microsoft/rest/ServiceFuture$6.class
+SHA-256-Digest: NcuNxtt4pMuQCNbfKMEJzy5NHcIFsDBUgC5kDRzq2ds=
+
+Name: com/microsoft/rest/RestException.class
+SHA-256-Digest: LW/9y/Z2fYyPq68IXTi/1kbKAdAw6smXGElze3pa+3M=
+
+Name: com/microsoft/rest/interceptors/UserAgentInterceptor.class
+SHA-256-Digest: Rh4mb5R0yLQy1VWRYZ1IXZn4EH7OxQiPRf8g8d2Fp8o=
+
+Name: META-INF/maven/com.microsoft.rest/client-runtime/pom.properties
+SHA-256-Digest: jD542l2n4dJY95Ltb3fidaMrRIGdKzJfjgdJxg240Ec=
+
+Name: com/microsoft/rest/ServiceResponseBuilder$3.class
+SHA-256-Digest: b3Q8WcO9nJ0OhKH5F3ce7ioih9yg2aY5npN9PAru+6E=
+
+Name: com/microsoft/rest/serializer/ByteArraySerializer.class
+SHA-256-Digest: CZme/l0VYsCBDYNaG2AeXgVWU+n8JV+SRxLvkqJ0mgk=
+
+Name: com/microsoft/rest/ServiceClient.class
+SHA-256-Digest: 6f4eSzGhI8TgjpPcrpAAI4LSrJlKLqNxPwOTv8G000E=
+
+Name: com/microsoft/rest/protocol/Environment$Endpoint.class
+SHA-256-Digest: N7p5f5k7tbLuaJZ/R1FGMqhA/YBrsSiUr4oZpaJevSA=
+
+Name: com/microsoft/rest/ServiceFuture$5.class
+SHA-256-Digest: ClyntrTn+sPVnSZCDMrgwXGfiMmx3KjV8PaRCvHGSyc=
+
+Name: com/microsoft/rest/ServiceFuture$8.class
+SHA-256-Digest: joWhS2hvecwW0b10COpWOPSMJzIdwh5XHSdPYdnkxu4=
+
+Name: com/microsoft/rest/serializer/HeadersSerializer.class
+SHA-256-Digest: 1UQlGDzcMi5veamyitlHf0R5LCacoZB7DQhTZpcDDWg=
+
+Name: com/microsoft/rest/credentials/ServiceClientCredentials.class
+SHA-256-Digest: tEelyC8SdoSJQDfkE5Upg2Y1ImFTnxdk4zIbXnsObpc=
+
+Name: com/microsoft/rest/serializer/DateTimeSerializer.class
+SHA-256-Digest: F5rWWAiiV06NtMNvyR8bhX9Y1U5fWXJbF/z69Yla5jA=
+
+Name: com/microsoft/rest/ServiceCallback.class
+SHA-256-Digest: zvsL/JxAqEyWKVhD1lnw94/JmMJJH1+ARCTlKtGQIMY=
+
+Name: com/microsoft/rest/serializer/FlatteningSerializer$1.class
+SHA-256-Digest: WtgS9YHDdE5W+FB2PdCJxJFvsxHtZz03wxhSR+uHnds=
+
+Name: META-INF/maven/com.microsoft.rest/client-runtime/pom.xml
+SHA-256-Digest: EiijluAuZA2lbnCg6+ezDSALa1PnOvBwdfLOAmK3v+c=
+
+Name: com/microsoft/rest/serializer/AdditionalPropertiesSerializer.cla
+ ss
+SHA-256-Digest: vGwunBJR/EDiYAf567ZNo97NeNeoepB+r/NVdSdsKeQ=
+
+Name: com/microsoft/rest/ServiceResponseBuilder.class
+SHA-256-Digest: QGk0hY/vId30Ajb6t6Ze4fOxEAYMh7nO0DctY2gX7F8=
+
+Name: com/microsoft/rest/protocol/ResponseBuilder.class
+SHA-256-Digest: xIYncriEQ6aVmHAVG0WsHwLitmsjt9v6sKPkxtSzpSI=
+
+Name: com/microsoft/rest/CollectionFormat.class
+SHA-256-Digest: CbBqqL02AImPFbVPaypituzvNmVmLR729pgNtfT0kLM=
+
+Name: com/microsoft/rest/SkipParentValidation.class
+SHA-256-Digest: dqs38C8ByMaGdKfMIEXXX/2VwtPQC4XerVOE4e+8J7s=
+
+Name: com/microsoft/rest/retry/ExponentialBackoffRetryStrategy.class
+SHA-256-Digest: 1ypxEWQfsCvWSqxqvc0b49BAueRxuxgixY9hAAL6E0g=
+
+Name: com/microsoft/rest/ServiceFuture$2.class
+SHA-256-Digest: acKv25MHxU16UTky9U5KSmYsUM41plKC7SwDqDlyCck=
+
+Name: com/microsoft/rest/serializer/FlatteningSerializer.class
+SHA-256-Digest: +0+dgnvM9dV1NRbM2HIN2IloZSuEAwjQoP9J0LqbZrk=
+
+Name: com/microsoft/rest/protocol/SerializerAdapter.class
+SHA-256-Digest: XAAKMKTT6T0vU1D0PFSdV51Df63dJlfhgTa21Sy50dc=
+
+Name: com/microsoft/rest/serializer/JacksonConverterFactory$JacksonReq
+ uestBodyConverter.class
+SHA-256-Digest: mhLKfr/YhUL+OAgzWhqb1bV4560QnrtmmQA2T5dpJQE=
+
+Name: com/microsoft/rest/interceptors/RequestIdHeaderInterceptor.class
+SHA-256-Digest: l4v7jH83GKN6lvKKbVxPqti7L5vWx2FZTIyo6BKjR4Q=
+
+Name: com/microsoft/rest/retry/RetryStrategy.class
+SHA-256-Digest: e1Ew28dsj4z9Ny0jFAiTa0nge/e+IW53olg0WZyMe8E=
+
+Name: com/microsoft/rest/credentials/BasicAuthenticationCredentialsInt
+ erceptor.class
+SHA-256-Digest: fLxYdbqcUv8l4TbgZBjoKsWW40m+i4R0t4l5+rSYGnM=
+
+Name: com/microsoft/rest/RestClient.class
+SHA-256-Digest: mixxl/MuV1dH7yGkG0332Y7q5+g3BLN3VJxEzFTdZpQ=
+
+Name: com/microsoft/rest/ServiceFuture$4.class
+SHA-256-Digest: 6P9K/h7ECt0wSRWtz6lPQhtOlcIGcgOAf5u5IsywcqE=
+
+Name: com/microsoft/rest/Base64Url.class
+SHA-256-Digest: KwH46wLj3M6z4vn6T0oMYpt2oVEUrWdkQzU+a/1d7tY=
+
+Name: com/microsoft/rest/interceptors/LoggingInterceptor.class
+SHA-256-Digest: 9irIhWhB8g8J7e0wQqf10BwRqBGy4p++yNJ6at58jVo=
+
+Name: com/microsoft/rest/LogLevel.class
+SHA-256-Digest: pYogiZ4IIsQ+9S5hQmsOKn8P8r+95pVB+UT076kX8yA=
+
+Name: com/microsoft/rest/ServiceFuture$1.class
+SHA-256-Digest: 3SIytgByEDp6O0b4+3RbWjqcDkRrWG0gY0L501U0pu8=
+
+Name: com/microsoft/rest/serializer/FlatteningDeserializer.class
+SHA-256-Digest: WJ+GbTR7wEvoK2GJJ8zMWBtzDPMLHdeFMf0srAbbZMI=
+
+Name: com/microsoft/rest/ServiceFuture.class
+SHA-256-Digest: u8VVenLpmYF8HY4ukoBjvzmDuxct5pP1uj1IrpS6OVQ=
+
+Name: com/microsoft/rest/interceptors/BaseUrlHandler.class
+SHA-256-Digest: 0GpB399bMzJXowY4f0R/gX7MBynLK4HRKVtukjl+tfM=
+
