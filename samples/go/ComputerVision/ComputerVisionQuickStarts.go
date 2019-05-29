@@ -99,7 +99,7 @@ func main() {
 
 	//	Text recognition on a local image
 	fmt.Println("\nGetting new local image for text recognition ... ")
-	localImagePath = "resources\\printed_text.jpg"
+	localImagePath = "resources\\handwritten_text.jpg"
 	workingDirectory, err = os.Getwd()
 	if err != nil {
 		log.Fatal(err)
@@ -137,7 +137,7 @@ func main() {
 
 	//	Text recognition on a remote image
 	fmt.Println("\nGetting new remote image for text recognition ... ")
-	remoteImageURL = "https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/handwritten_text.jpg"
+	remoteImageURL = "https://www.researchgate.net/profile/Neeta_Nain/publication/299666231/figure/fig1/AS:491693964304386@1494240384780/Example-image-of-a-general-handwritten-text-paragraph-from-IAM-dataset-4.png"
 	fmt.Printf("Remote image path: \n%v\n", remoteImageURL)
 
 	RecognizeTextReadAPIRemoteImage(computerVisionClient, remoteImageURL)
@@ -1222,4 +1222,3 @@ func RecognizeTextOCRRemoteImage(client computervision.BaseClient, remoteImageUR
   }
 }
 //	END - Recognize text with OCR in a remote image
-
