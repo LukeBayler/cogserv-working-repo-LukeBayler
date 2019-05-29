@@ -1,5 +1,6 @@
 *.class
 *.exe
+*.jpg
 
 # Auth filed
 *.auth
