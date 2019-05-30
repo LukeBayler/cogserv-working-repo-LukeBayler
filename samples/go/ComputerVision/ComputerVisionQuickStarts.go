@@ -27,8 +27,7 @@ import (
  *  - Detecting image types (clip art/line drawing)
  *  - Detecting objects
  *  - Detecting brands
- *  - Recognizing printed and handwritten text with (Read API)
- *  - Recognizing printed and handwritten text with (OCR)
+ *  - Recognizing printed and handwritten text with the batch read API
  */
 
 //	Declare global so don't have to pass it to all of the tasks.
@@ -73,15 +72,15 @@ func main() {
 	}
 	fmt.Printf("\n\nLocal image path:\n%v\n", workingDirectory + "\\" + localImagePath)
 
-	DescribeLocalImage(computerVisionClient, localImagePath)
-	CategorizeLocalImage(computerVisionClient, localImagePath)
-	TagLocalImage(computerVisionClient, localImagePath)
-	DetectFacesLocalImage(computerVisionClient, localImagePath)
-	DetectAdultOrRacyContentLocalImage(computerVisionClient, localImagePath)
-	DetectColorSchemeLocalImage(computerVisionClient, localImagePath)
-	DetectDomainSpecificContentLocalImage(computerVisionClient, localImagePath)
-	DetectImageTypesLocalImage(computerVisionClient, localImagePath)
-	DetectObjectsLocalImage(computerVisionClient, localImagePath)
+	// DescribeLocalImage(computerVisionClient, localImagePath)
+	// CategorizeLocalImage(computerVisionClient, localImagePath)
+	// TagLocalImage(computerVisionClient, localImagePath)
+	// DetectFacesLocalImage(computerVisionClient, localImagePath)
+	// DetectAdultOrRacyContentLocalImage(computerVisionClient, localImagePath)
+	// DetectColorSchemeLocalImage(computerVisionClient, localImagePath)
+	// DetectDomainSpecificContentLocalImage(computerVisionClient, localImagePath)
+	// DetectImageTypesLocalImage(computerVisionClient, localImagePath)
+	// DetectObjectsLocalImage(computerVisionClient, localImagePath)
 	//	END - Analyze a local iamge
 
 	//	Brand detection on a local image
@@ -93,12 +92,12 @@ func main() {
 	}
 	fmt.Printf("Local image path:\n%v\n", workingDirectory + "\\" + localImagePath)
 
-	DetectBrandsLocalImage(computerVisionClient, localImagePath)
+	// DetectBrandsLocalImage(computerVisionClient, localImagePath)
 	//	END - Brand detection
 
 
 	//	Text recognition on a local image
-	fmt.Println("\nGetting new local image for text recognition ... ")
+	fmt.Println("\nGetting new local image for text recognition of handwriting... ")
 	localImagePath = "resources\\handwritten_text.jpg"
 	workingDirectory, err = os.Getwd()
 	if err != nil {
@@ -107,7 +106,6 @@ func main() {
 	fmt.Printf("Local image path:\n%v\n", workingDirectory + "\\" + localImagePath)
 
 	RecognizeTextReadAPILocalImage(computerVisionClient, localImagePath)
-	RecognizeTextOCRLocalImage(computerVisionClient, localImagePath)
 	//	END - Text recognition on a local image
 
 
@@ -115,15 +113,15 @@ func main() {
 	remoteImageURL := "https://github.com/Azure-Samples/cognitive-services-sample-data-files/raw/master/ComputerVision/Images/faces.jpg"
 	fmt.Printf("\n\nRemote image path: \n%v\n", remoteImageURL)
 
-	DescribeRemoteImage(computerVisionClient, remoteImageURL)
-	CategorizeRemoteImage(computerVisionClient, remoteImageURL)
-	TagRemoteImage(computerVisionClient, remoteImageURL)
-	DetectFacesRemoteImage(computerVisionClient, remoteImageURL)
-	DetectAdultOrRacyContentRemoteImage(computerVisionClient, remoteImageURL)
-	DetectColorSchemeRemoteImage(computerVisionClient, remoteImageURL)
-	DetectDomainSpecificContentRemoteImage(computerVisionClient, remoteImageURL)
-	DetectImageTypesRemoteImage(computerVisionClient, remoteImageURL)
-	DetectObjectsRemoteImage(computerVisionClient, remoteImageURL)
+	// DescribeRemoteImage(computerVisionClient, remoteImageURL)
+	// CategorizeRemoteImage(computerVisionClient, remoteImageURL)
+	// TagRemoteImage(computerVisionClient, remoteImageURL)
+	// DetectFacesRemoteImage(computerVisionClient, remoteImageURL)
+	// DetectAdultOrRacyContentRemoteImage(computerVisionClient, remoteImageURL)
+	// DetectColorSchemeRemoteImage(computerVisionClient, remoteImageURL)
+	// DetectDomainSpecificContentRemoteImage(computerVisionClient, remoteImageURL)
+	// DetectImageTypesRemoteImage(computerVisionClient, remoteImageURL)
+	// DetectObjectsRemoteImage(computerVisionClient, remoteImageURL)
 	//	END - Analyze a remote image
 
 	//	Brand detection on a local image
@@ -131,17 +129,16 @@ func main() {
 	remoteImageURL = "https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/images/gray-shirt-logo.jpg"
 	fmt.Printf("Remote image path: \n%v\n", remoteImageURL)
 
-	DetectBrandsRemoteImage(computerVisionClient, remoteImageURL)
+	// DetectBrandsRemoteImage(computerVisionClient, remoteImageURL)
 	//	END - Brand detection on a remote image
 
 
 	//	Text recognition on a remote image
-	fmt.Println("\nGetting new remote image for text recognition ... ")
-	remoteImageURL = "https://www.researchgate.net/profile/Neeta_Nain/publication/299666231/figure/fig1/AS:491693964304386@1494240384780/Example-image-of-a-general-handwritten-text-paragraph-from-IAM-dataset-4.png"
+	fmt.Println("\nGetting new remote image for text recognition of printed text... ")
+	remoteImageURL = "https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/printed_text.jpg"
 	fmt.Printf("Remote image path: \n%v\n", remoteImageURL)
 
 	RecognizeTextReadAPIRemoteImage(computerVisionClient, remoteImageURL)
-	RecognizeTextOCRRemoteImage(computerVisionClient, remoteImageURL)
 	//	END - Text recognition on a remote image
 }
 
@@ -1005,7 +1002,7 @@ func RecognizeTextReadAPILocalImage(client computervision.BaseClient, localImage
 		log.Fatal(err)
 	}
 
-	textRecognitionMode := computervision.Printed
+	textRecognitionMode := computervision.Handwritten
 
 	//	When you use the Read Document interface, the response contains a field
 	//	called "Operation-Location", which contains the URL to use for your
@@ -1128,97 +1125,3 @@ func RecognizeTextReadAPIRemoteImage(client computervision.BaseClient, remoteIma
 		}
 	}
 }
-
-
-/*  Recognize text with OCR in a local image by:
- *    1. Instantiating a ReadCloser, which is required by RecognizePrintedTextInStream.
- *    2. Opening the ReadCloser instance for reading.
- *    3. Calling the Computer Vision service's RecognizePrintedTextInStream with the:
- *       - context
- *       - image
- *       - whether to detect the orientation of the text before processing
- *       - language code of the text to detect
- *    4. Displaying the results.
- */
-func RecognizeTextOCRLocalImage(client computervision.BaseClient, localImagePath string) {
-	var localImage io.ReadCloser
-	localImage, err := os.Open(localImagePath)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	localImageOcrResult, err := client.RecognizePrintedTextInStream(
-			computerVisionContext,
-      true,
-      localImage,
-			computervision.En)
-		if err != nil {
-			log.Fatal(err)
-		}
-
-	fmt.Println("\nRecognizing text in a local image with OCR ... ")
-  fmt.Printf("Text:\n")
-  fmt.Printf("Language: %v\n", *localImageOcrResult.Language)
-  fmt.Printf("Text angle: %v\n", *localImageOcrResult.TextAngle)
-  fmt.Printf("Orientation: %v\n", *localImageOcrResult.Orientation)
-
-  fmt.Printf("Text regions:\n")
-  for _, localImageOcrRegion := range *localImageOcrResult.Regions {
-    fmt.Printf("\tRegion bounding box: %v\n", *localImageOcrRegion.BoundingBox)
-    for _, localImageOcrLine := range *localImageOcrRegion.Lines {
-      fmt.Printf("\tLine bounding box %v\n", *localImageOcrLine.BoundingBox)
-      for _, localImageOcrWord := range *localImageOcrLine.Words {
-        fmt.Printf("\t\tWord bounding box: %v\n", *localImageOcrWord.BoundingBox)
-        fmt.Printf("\t\tText: %v\n\n", *localImageOcrWord.Text)
-      }
-      fmt.Println()
-    }
-    fmt.Println()
-  }
-}
-//	END - Recognize text with OCR in a local image
-
-
-/*  Recognize text with OCR in a remote image by:
- *    1. Saving the URL as an ImageURL type for passing to AnalyzeImage.
- *    2. Calling the Computer Vision service's RecognizePrintedTextInStream with the:
- *       - context
- *       - image
- *       - whether to detect the orientation of the text before processing
- *       - language code of the text to detect
- *    3. Displaying the results.
- */
-func RecognizeTextOCRRemoteImage(client computervision.BaseClient, remoteImageURL string) {
-	var remoteImage computervision.ImageURL
-	remoteImage.URL = &remoteImageURL
-
-	remoteImageOcrResult, err := client.RecognizePrintedText(
-		computerVisionContext,
-    true,
-    remoteImage,
-		"en")
-	if err != nil {
-	 	log.Fatal(err)
-	}
-
-	fmt.Println("\nRecognizing text in a remote image with OCR ... ")
-  fmt.Printf("Text:\n")
-  fmt.Printf("Language: %v\n", *remoteImageOcrResult.Language)
-  fmt.Printf("Text angle: %v\n", *remoteImageOcrResult.TextAngle)
-  fmt.Printf("Orientation: %v\n", *remoteImageOcrResult.Orientation)
-
-  fmt.Printf("Text regions:\n")
-  for _, remoteImageOcrRegion := range *remoteImageOcrResult.Regions {
-    fmt.Printf("\tRegion bounding box: %v\n", *remoteImageOcrRegion.BoundingBox)
-    for _, remoteImageOcrLine := range *remoteImageOcrRegion.Lines {
-      fmt.Printf("\tLine bounding box %v\n", *remoteImageOcrLine.BoundingBox)
-      for _, remoteImageOcrWord := range *remoteImageOcrLine.Words {
-        fmt.Printf("\t\tWord bounding box: %v\n", *remoteImageOcrWord.BoundingBox)
-        fmt.Printf("\t\tText: %v\n\n", *remoteImageOcrWord.Text)
-      }
-      fmt.Println()
-    }
-    fmt.Println()
-  }
-}
-//	END - Recognize text with OCR in a remote image
