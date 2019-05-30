@@ -20,8 +20,6 @@ import java.util.List;
  *  - Detecting the color scheme
  *  - Detecting domain-specific content (celebrities/landmarks)
  *  - Detecting image types (clip art/line drawing)
- *  - Recognizing printed and handwritten text with (Read API)
- *  - Recognizing printed and handwritten text with (OCR)
  */
 
 class ComputerVisionQuickstart {
