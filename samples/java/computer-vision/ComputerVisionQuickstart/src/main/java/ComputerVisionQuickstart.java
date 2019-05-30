@@ -5,7 +5,6 @@ import com.microsoft.azure.cognitiveservices.vision.computervision.*;
 import com.microsoft.azure.cognitiveservices.vision.computervision.models.*;
 
 import java.io.File;
-// import java.io.FileInputStream;
 import java.nio.file.Files;
 
 import java.util.ArrayList;
@@ -57,45 +56,29 @@ class ComputerVisionQuickstart {
     String workingDirectory = System.getProperty("user.dir");
     System.out.println("\n\nLocal image path:\n" + workingDirectory + "\\" + localImagePath);
 
-    // DescribeLocalImage(computerVisionClient, localImagePath);
-  	// CategorizeLocalImage(computerVisionClient, localImagePath);
-  	// TagLocalImage(computerVisionClient, localImagePath);
-  	// DetectFacesLocalImage(computerVisionClient, localImagePath);
-  	// DetectAdultOrRacyContentLocalImage(computerVisionClient, localImagePath);
-  	// DetectColorSchemeLocalImage(computerVisionClient, localImagePath);
-  	// DetectDomainSpecificContentLocalImage(computerVisionClient, localImagePath);
-  	// DetectImageTypesLocalImage(computerVisionClient, localImagePath);
+    DescribeLocalImage(computerVisionClient, localImagePath);
+  	CategorizeLocalImage(computerVisionClient, localImagePath);
+  	TagLocalImage(computerVisionClient, localImagePath);
+  	DetectFacesLocalImage(computerVisionClient, localImagePath);
+  	DetectAdultOrRacyContentLocalImage(computerVisionClient, localImagePath);
+  	DetectColorSchemeLocalImage(computerVisionClient, localImagePath);
+  	DetectDomainSpecificContentLocalImage(computerVisionClient, localImagePath);
+  	DetectImageTypesLocalImage(computerVisionClient, localImagePath);
     //  END - Analyze a local image
-
-    //  Text recognition with the batch Read API on local image
-    System.out.println("\nGetting new local image for text recognition ...");
-    localImagePath = "src\\main\\resources\\printed_text.jpg";
-    System.out.println("\nLocal image path:\n" + workingDirectory + "\\" + localImagePath);
-    RecognizeTextReadAPILocalImage(computerVisionClient, localImagePath);
-    // RecognizeTextOCRLocalImage(computerVisionClient, localImagePath);
-    //  END - Text recognition with the batch Read API on local image
 
     //  Analyze a remote image
     String remoteImageURL = "https://github.com/Azure-Samples/cognitive-services-sample-data-files/raw/master/ComputerVision/Images/faces.jpg";
     System.out.println("\n\nRemote image path: \n" + remoteImageURL);
 
-    // DescribeRemoteImage(computerVisionClient, remoteImageURL);
-    // CategorizeRemoteImage(computerVisionClient, remoteImageURL);
-    // TagRemoteImage(computerVisionClient, remoteImageURL);
-    // DetectFacesRemoteImage(computerVisionClient, remoteImageURL);
-    // DetectAdultOrRacyContentRemoteImage(computerVisionClient, remoteImageURL);
-    // DetectColorSchemeRemoteImage(computerVisionClient, remoteImageURL);
-    // DetectDomainSpecificContentRemoteImage(computerVisionClient, remoteImageURL);
-    // DetectImageTypesRemoteImage(computerVisionClient, remoteImageURL);
+    DescribeRemoteImage(computerVisionClient, remoteImageURL);
+    CategorizeRemoteImage(computerVisionClient, remoteImageURL);
+    TagRemoteImage(computerVisionClient, remoteImageURL);
+    DetectFacesRemoteImage(computerVisionClient, remoteImageURL);
+    DetectAdultOrRacyContentRemoteImage(computerVisionClient, remoteImageURL);
+    DetectColorSchemeRemoteImage(computerVisionClient, remoteImageURL);
+    DetectDomainSpecificContentRemoteImage(computerVisionClient, remoteImageURL);
+    DetectImageTypesRemoteImage(computerVisionClient, remoteImageURL);
     //  END - Analyze a remote image
-
-    //  Text recognition with OCR on a remote image
-    remoteImageURL = "https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/printed_text.jpg";
-    System.out.println("\n\nRemote image path: \n" + remoteImageURL);
-    // RecognizeTextReadAPIRemoteImage(computerVisionClient, remoteImageURL);
-    // RecognizeTextOCRRemoteImage(computerVisionClient, remoteImageURL);
-    //  END - Text recognition with OCR on a remote image
-
   }
 
 
@@ -472,7 +455,7 @@ class ComputerVisionQuickstart {
 
           System.out.println("\nColor scheme of the local image: ");
           System.out.println("Is black and white: " + analysis.color().isBWImg());
-          System.out.println("Accent color: " + analysis.color().accentColor());
+          System.out.println("Accent color: 0x" + analysis.color().accentColor());
           System.out.println("Dominant background color: " + analysis.color().dominantColorBackground());
           System.out.println("Dominant foreground color: " + analysis.color().dominantColorForeground());
           System.out.println("Dominant colors: " + String.join(", ", analysis.color().dominantColors()));
@@ -504,7 +487,7 @@ class ComputerVisionQuickstart {
 
           System.out.println("\nColor scheme of the remote image: ");
           System.out.println("Is black and white: " + analysis.color().isBWImg());
-          System.out.println("Accent color: " + analysis.color().accentColor());
+          System.out.println("Accent color: 0x" + analysis.color().accentColor());
           System.out.println("Dominant background color: " + analysis.color().dominantColorBackground());
           System.out.println("Dominant foreground color: " + analysis.color().dominantColorForeground());
           System.out.println("Dominant colors: " + String.join(", ", analysis.color().dominantColors()));
@@ -694,156 +677,4 @@ class ComputerVisionQuickstart {
     }
   }
   //  END - Detect image type of a remote image
-
-
-  /*  Recognize text with the Read API in a local image by:
-   *   1. Getting the raw image bytes.
-   *   2. Calling the Computer Vision service's RecognizeTextInStream with the:
-   *       - image
-   *       - text recognition mode (handwritten or printed)
-   *   3. Extracting the Operation-Location URL value from the RecognizeTextInStream
-   *       response
-   *   4. Waiting for the operation to complete.
-   *   5. Displaying the results.
-   */
-  public static void RecognizeTextReadAPILocalImage(ComputerVisionClient computerVisionClient, String localImagePath) {
-    try {
-      File localImage = new File(localImagePath);
-      byte[] imgBytes = Files.readAllBytes(localImage.toPath());
-
-      RecognizeTextInStreamHeaders textHeaders = computerVisionClient.computerVision().recognizeTextInStream(imgBytes, TextRecognitionMode.PRINTED).withOperationLocation();
-        // .withImage(imgBytes)
-        // .withRecognitionMode(TextRecognitionMode.PRINTED)
-        // .execute();
-
-    } catch (Exception e) {
-        System.out.println(e.getMessage());
-        e.printStackTrace();
-    }
   }
-  //  END - Recognize text with the Read API in a local image
-
-
-  /*  Recognize text with the Read API in a remote image by:
-   *   1. Calling the Computer Vision service's RecognizeText with the:
-   *       - image URL
-   *       - text recognition mode (handwritten or printed)
-   *   2. Extracting the Operation-Location URL value from the RecognizeText
-   *       response
-   *   3. Waiting for the operation to complete.
-   *   4. Displaying the results.
-   */
-  // public static void RecognizeTextReadAPIRemoteImage(ComputerVisionClient computerVisionClient, String remoteImageURL) {
-  //   try {
-  //     RecognizeTextInStreamHeaders textHeaders = computerVisionClient.computerVision().recognizeText()
-  //       .withImage(imgBytes)
-  //       .withRecognitionMode(TextRecognitionMode.PRINTED)
-  //       .execute();
-  //
-  //   } catch (Exception e) {
-  //       System.out.println(e.getMessage());
-  //       e.printStackTrace();
-  //   }
-  // }
-  //  END - Recognize text with the Read API in a remote image
-
-
-  /*  Recognize text with OCR in a local image by:
-   *    1. Getting the raw image bytes.
-   *    2. Calling the Computer Vision service's RecognizePrintedTextInStream with the:
-   *       - image
-   *       - whether to detect the orientation of the text before processing
-   *       - language code of the text to detect
-   *    3. Displaying the results.
-   */
-  public static void RecognizeTextOCRLocalImage(ComputerVisionClient computerVisionClient, String localImagePath) {
-    try {
-      File localImage = new File(localImagePath);
-      byte[] imgBytes = Files.readAllBytes(localImage.toPath());
-
-      OcrResult ocrResult = computerVisionClient.computerVision().recognizePrintedTextInStream()
-          .withDetectOrientation(true)
-          .withImage(imgBytes)
-          .withLanguage(OcrLanguages.EN)
-          .execute();
-
-      System.out.println("\nRecognizing text in a local image with OCR ... ");
-      System.out.println("Text: ");
-      System.out.println("Language: " + ocrResult.language());
-      System.out.println("Text angle: " + ocrResult.textAngle());
-      System.out.println("Orientation: " + ocrResult.orientation());
-
-      System.out.println("Text regions: ");
-      for (OcrRegion reg : ocrResult.regions()) {
-          System.out.println("Region bounding box: " + reg.boundingBox());
-
-          for (OcrLine line : reg.lines()) {
-              System.out.println("Line bounding box: " + line.boundingBox());
-
-              for (OcrWord word : line.words()) {
-                  System.out.println("Word bounding box: " + word.boundingBox());
-                  System.out.println("Text: " + word.text() + " ");
-              }
-
-              System.out.println();
-
-          }
-
-          System.out.println();
-      }
-
-      } catch (Exception e) {
-          System.out.println(e.getMessage());
-          e.printStackTrace();
-      }
-  }
-  //  END - Recognize text with the OCR in a local image
-
-
-  /*  Recognize text with OCR in a remote image by:
-   *    1. Calling the Computer Vision service's RecognizePrintedTextInStream with the:
-   *       - image URL
-   *       - whether to detect the orientation of the text before processing
-   *       - language code of the text to detect
-   *    2. Displaying the results.
-   */
-  public static void RecognizeTextOCRRemoteImage(ComputerVisionClient computerVisionClient, String remoteImageURL) {
-    try {
-        OcrResult ocrResult = computerVisionClient.computerVision().recognizePrintedText()
-            .withDetectOrientation(true)
-            .withUrl(remoteImageURL)
-            .withLanguage(OcrLanguages.EN)
-            .execute();
-
-        System.out.println("\nRecognizing text in a remote image with OCR ... ");
-        System.out.println("Text: ");
-        System.out.println("Language: " + ocrResult.language());
-        System.out.println("Text angle: " + ocrResult.textAngle());
-        System.out.println("Orientation: " + ocrResult.orientation());
-
-        System.out.println("Text regions: ");
-        for (OcrRegion reg : ocrResult.regions()) {
-            System.out.println("Region bounding box: " + reg.boundingBox());
-
-            for (OcrLine line : reg.lines()) {
-                System.out.println("Line bounding box: " + line.boundingBox());
-
-                for (OcrWord word : line.words()) {
-                    System.out.println("Word bounding box: " + word.boundingBox());
-                    System.out.println("Text: " + word.text() + " ");
-                }
-
-                System.out.println();
-
-            }
-
-            System.out.println();
-        }
-
-    } catch (Exception e) {
-        System.out.println(e.getMessage());
-        e.printStackTrace();
-    }
-  }
-  //  END - Recognize text with the OCR in a remote image
-}
