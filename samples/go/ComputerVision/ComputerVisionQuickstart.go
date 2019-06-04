@@ -124,7 +124,7 @@ func main() {
 	DetectObjectsRemoteImage(computerVisionClient, remoteImageURL)
 	//	END - Analyze a remote image
 
-	//	Brand detection on a local image
+	//	Brand detection on a remote image
 	fmt.Println("\nGetting new remote image for brand recognition ... ")
 	remoteImageURL = "https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/images/gray-shirt-logo.jpg"
 	fmt.Printf("Remote image path: \n%v\n", remoteImageURL)
@@ -634,6 +634,7 @@ func DetectDomainSpecificContentLocalImage(client computervision.BaseClient, loc
 	}
 
 	//	TODO - Not sure you need both of these for domain-specific content detection
+	//	TODO - Actually want to use the AnalyzeImageInStreamByDomain so don't need VisualFeatureTypes.
 	features := []computervision.VisualFeatureTypes{
     computervision.VisualFeatureTypesDescription,
 		computervision.VisualFeatureTypesCategories,
@@ -702,12 +703,14 @@ func DetectDomainSpecificContentRemoteImage(client computervision.BaseClient, re
 	remoteImage.URL = &remoteImageURL
 
 	//	TODO - Not sure you need both of these for domain-specific content detection
+//	TODO - Actually want to use the AnalyzeImageByDomain so don't need VisualFeatureTypes.
 	features := []computervision.VisualFeatureTypes{
 			computervision.VisualFeatureTypesDescription,
 			computervision.VisualFeatureTypesCategories,
 	}
 
 	//	TODO - Not sure this line does anything. Seems to work if empty.
+
 	details := []computervision.Details{computervision.Celebrities, computervision.Landmarks}
 
 	imageAnalysis, err := client.AnalyzeImage(
