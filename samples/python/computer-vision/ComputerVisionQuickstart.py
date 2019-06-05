@@ -219,10 +219,6 @@ local_image_analysis = computervision_client.analyze_image_in_stream(local_image
 print("\nAnalyzing local image for adult or racy content ... ")
 print("Is adult content: {} with confidence {:.2f}%".format(local_image_analysis.adult.is_adult_content, local_image_analysis.adult.adult_score * 100))
 print("Has racy content: {} with confidence {:.2f}%".format(local_image_analysis.adult.is_racy_content, local_image_analysis.adult.racy_score * 100))
-
-
-# print("Is adult content: " + str(local_image_analysis.adult.is_adult_content) + " with confidence " + str(local_image_analysis.adult.adult_score))
-# print("Has racy content: " + str(local_image_analysis.adult.is_racy_content) + " with confidence " + str(local_image_analysis.adult.racy_score))
 #   END - Detect adult or racy content in a local image
 
 # Detect adult or racy content in a remote image by:
