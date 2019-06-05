@@ -1,7 +1,8 @@
 from azure.cognitiveservices.vision.computervision import ComputerVisionClient
 
-from azure.cognitiveservices.vision.computervision.models import VisualFeatureTypes
 from azure.cognitiveservices.vision.computervision.models import TextOperationStatusCodes
+from azure.cognitiveservices.vision.computervision.models import TextRecognitionMode
+from azure.cognitiveservices.vision.computervision.models import VisualFeatureTypes
 
 from msrest.authentication import CognitiveServicesCredentials
 
@@ -63,13 +64,13 @@ print("\n\nLocal image path:\n" + os.getcwd() + local_image_path)
 #      - features to extract
 #   4. Displaying the image captions and their confidence values.
 local_image = open(local_image_path, "rb")
-description = computervision_client.describe_image_in_stream(local_image)
+local_image_description = computervision_client.describe_image_in_stream(local_image)
 
 print("\nCaptions from local image: ")
-if (len(description.captions) == 0):
+if (len(local_image_description.captions) == 0):
     print("No captions detected.")
 else:
-    for caption in description.captions:
+    for caption in local_image_description.captions:
         print("'{}' with confidence {:.2f}%".format(caption.text, caption.confidence * 100))
 #  END - Describe a local image
 
@@ -84,13 +85,13 @@ print("\n\nRemote image URL:\n" + remote_image_url)
 #      - image URL
 #      - features to extract
 #   3. Displaying the image captions and their confidence values.
-description = computervision_client.describe_image(remote_image_url)
+remote_image_description = computervision_client.describe_image(remote_image_url)
 
 print("\nCaptions from remote image: ")
-if (len(description.captions) == 0):
+if (len(remote_image_description.captions) == 0):
     print("No captions detected.")
 else:
-    for caption in description.captions:
+    for caption in remote_image_description.captions:
         print("'{}' with confidence {:.2f}%".format(caption.text, caption.confidence * 100))
 #   END - Describe a remote image
 
@@ -138,13 +139,13 @@ else:
 #      - features to extract
 #   4. Displaying the image captions and their confidence values.
 local_image = open(local_image_path, "rb")
-local_image_analysis = computervision_client.tag_image_in_stream(local_image)
+local_image_tags = computervision_client.tag_image_in_stream(local_image)
 
 print("\nTags in the local image: ")
-if (len(local_image_analysis.tags) == 0):
+if (len(local_image_tags.tags) == 0):
     print("No tags detected.")
 else:
-    for tag in local_image_analysis.tags:
+    for tag in local_image_tags.tags:
         print("'{}' with confidence {:.2f}%".format(tag.name, tag.confidence * 100))
 #   END - Tag a local image
 
@@ -153,13 +154,13 @@ else:
 #      - image URL
 #      - features to extract
 #   2. Displaying the image captions and their confidence values.
-remote_image_analysis = computervision_client.tag_image(remote_image_url)
+remote_image_tags = computervision_client.tag_image(remote_image_url)
 
 print("\nTags in the remote image: ")
-if (len(remote_image_analysis.tags) == 0):
+if (len(remote_image_tags.tags) == 0):
     print("No tags detected.")
 else:
-    for tag in remote_image_analysis.tags:
+    for tag in remote_image_tags.tags:
         print("'{}' with confidence {:.2f}%".format(tag.name, tag.confidence * 100))
 #   END - Tag a remote image
 
@@ -278,18 +279,24 @@ print("Dominant colors: {}".format(remote_image_analysis.color.dominant_colors))
 #      - image
 #   3. Displaying any domain-specific content (celebrities/landmarks).
 local_image = open(local_image_path, "rb")
-celebs = computervision_client.analyze_image_by_domain_in_stream("celebrities", local_image)
+local_image_celebs = computervision_client.analyze_image_by_domain_in_stream("celebrities", local_image)
 
 print("\nCelebrities in the local image:")
-for celeb in celebs.result["celebrities"]:
-    print(celeb["name"])
+if len(local_image_celebs.result["celebrities"]) == 0:
+    print("No celebrities detected.")
+else:
+    for celeb in local_image_celebs.result["celebrities"]:
+        print(celeb["name"])
 
 local_image = open(local_image_path, "rb")
-landmarks = computervision_client.analyze_image_by_domain_in_stream("landmarks", local_image)
+local_image_landmarks = computervision_client.analyze_image_by_domain_in_stream("landmarks", local_image)
 
 print("\nLandmarks in the local image:")
-for landmark in landmarks.result["landmarks"]:
-    print(landmark["name"])
+if len(local_image_landmarks.result["landmarks"]) == 0:
+    print("No landmarks detected.")
+else:
+    for landmark in local_image_landmarks.result["landmarks"]:
+        print(landmark["name"])
 #   END Detect domain-specific content (celebrities/landmarks) in a local image
 
 #   Detect domain-specific content (celebrities/landmarks) in a remote image by:
@@ -297,17 +304,23 @@ for landmark in landmarks.result["landmarks"]:
 #      - domain-specific content to search for
 #      - image
 #   2. Displaying any domain-specific content (celebrities/landmarks).
-celebs = computervision_client.analyze_image_by_domain("celebrities", remote_image_url)
+remote_image_celebs = computervision_client.analyze_image_by_domain("celebrities", remote_image_url)
 
 print("\nCelebrities in the remote image:")
-for celeb in celebs.result["celebrities"]:
-    print(celeb["name"])
+if len(remote_image_celebs.result["celebrities"]) == 0:
+    print("No celebrities detected.")
+else:
+    for celeb in remote_image_celebs.result["celebrities"]:
+        print(celeb["name"])
 
-landmarks = computervision_client.analyze_image_by_domain("landmarks", remote_image_url)
+remote_image_landmarks = computervision_client.analyze_image_by_domain("landmarks", remote_image_url)
 
 print("\nLandmarks in the remote image:")
-for landmark in landmarks.result["landmarks"]:
-    print(landmark["name"])
+if len(remote_image_landmarks.result["landmarks"]) == 0:
+    print("No landmarks detected.")
+else:
+    for landmark in remote_image_landmarks.result["landmarks"]:
+        print(landmark["name"])
 #   END Detect domain-specific content (celebrities/landmarks) in a remote image
 
 #   Detect image types (clip art/line drawing) of a local image by:
@@ -366,13 +379,13 @@ else:
 #      - image
 #   3. Displaying the location of the objects.
 local_image = open(local_image_path, "rb")
-local_image_analysis = computervision_client.detect_objects_in_stream(local_image)
+local_image_objects = computervision_client.detect_objects_in_stream(local_image)
 
 print("\nDetecting objects in local image:")
-if len(local_image_analysis.objects) == 0:
+if len(local_image_objects.objects) == 0:
     print("No objects detected.")
 else:
-    for object in local_image_analysis.objects:
+    for object in local_image_objects.objects:
         print("object at location {}, {}, {}, {}".format( \
         object.rectangle.x, object.rectangle.x + object.rectangle.w, \
         object.rectangle.y, object.rectangle.y + object.rectangle.h))
@@ -384,13 +397,13 @@ else:
 #      - image
 #      - features to extract
 #   3. Displaying the location of the objects.
-remote_image_analysis = computervision_client.detect_objects(remote_image_url)
+remote_image_objects = computervision_client.detect_objects(remote_image_url)
 
 print("\nDetecting objects in remote image:")
-if len(remote_image_analysis.objects) == 0:
+if len(remote_image_objects.objects) == 0:
     print("No objects detected.")
 else:
-    for object in remote_image_analysis.objects:
+    for object in remote_image_objects.objects:
         print("object at location {}, {}, {}, {}".format( \
         object.rectangle.x, object.rectangle.x + object.rectangle.w, \
         object.rectangle.y, object.rectangle.y + object.rectangle.h))
@@ -448,7 +461,7 @@ else:
 #   5. Displaying the results.
 local_image_path = "resources\\handwritten_text.jpg"
 local_image = open(local_image_path, "rb")
-text_recognition_mode = "handwritten"
+text_recognition_mode = TextRecognitionMode.handwritten
 num_chars_in_operation_id = 36
 
 client_response = computervision_client.batch_read_file_in_stream(local_image, text_recognition_mode, raw=True)
@@ -456,7 +469,7 @@ operation_location = client_response.headers["Operation-Location"]
 id_location = len(operation_location) - num_chars_in_operation_id
 operation_id = operation_location[id_location:]
 
-print("\nRecognizing text in a local image with the batch Read API ... \n")
+print("\n\nRecognizing text in a local image with the batch Read API ... \n")
 
 while True:
     result = computervision_client.get_read_operation_result(operation_id)
@@ -483,7 +496,7 @@ if result.status == TextOperationStatusCodes.succeeded:
 #   4. Waiting for the operation to complete.
 #   5. Displaying the results.
 remote_image_url = "https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/printed_text.jpg"
-text_recognition_mode = "printed"
+text_recognition_mode = TextRecognitionMode.printed
 num_chars_in_operation_id = 36
 
 client_response = computervision_client.batch_read_file(remote_image_url, text_recognition_mode, raw=True)
@@ -508,11 +521,38 @@ if result.status == TextOperationStatusCodes.succeeded:
 #   END - Recognizing printed and handwritten text with the batch read API in a remote image
 
 # Recognize printed text with OCR in a local image by:
+#   1. Opening the binary file for reading.
+#   2. Calling the Computer Vision service's recognize_printed_text_in_stream with the:
+#      - image
+#   3. Displaying the lines of text and their bounding boxes.
 local_image_path = "resources\\printed_text.jpg"
+local_image = open(local_image_path, "rb")
+
+print("\nRecognizing printed text with OCR on a local image ...\n")
+ocr_result = computervision_client.recognize_printed_text_in_stream(local_image)
+for region in ocr_result.regions:
+    for line in region.lines:
+        print("Bounding box: {}".format(line.bounding_box))
+        s = ""
+        for word in line.words:
+            s += word.text + " "
+        print(s + "\n")
 #   END - Recognize printed text with OCR in a local image
 
 
-# Recognize text with OCR in a remote image by:
+# Recognize printed text with OCR in a remote image by:
+#   1. Calling the Computer Vision service's recognize_printed_text with the:
+#      - image
+#   2. Displaying the lines of text and their bounding boxes.
 remote_image_url = "https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/printed_text.jpg"
 
+print("\nRecognizing printed text with OCR on a remote image ...\n")
+ocr_result = computervision_client.recognize_printed_text(remote_image_url)
+for region in ocr_result.regions:
+    for line in region.lines:
+        print("Bounding box: {}".format(line.bounding_box))
+        s = ""
+        for word in line.words:
+            s += word.text + " "
+        print(s + "\n")
 #   END - Recognize printed text with OCR in a remote image
