@@ -1,6 +1,6 @@
 from azure.cognitiveservices.vision.computervision import ComputerVisionClient
-# from azure.cognitiveservices.vision.computervision import VisualFeatureTypes
 
+from azure.cognitiveservices.vision.computervision.models import VisualFeatureTypes
 from azure.cognitiveservices.vision.computervision.models import TextOperationStatusCodes
 
 from msrest.authentication import CognitiveServicesCredentials
@@ -22,6 +22,7 @@ import time
 #     - Detecting objects
 #     - Detecting brands
 #     - Recognizing printed and handwritten text with the batch read API
+#     - Recognizing printed text with OCR
 
 
 #   Configure the Computer Vision client by:
@@ -62,15 +63,14 @@ print("\n\nLocal image path:\n" + os.getcwd() + local_image_path)
 #      - features to extract
 #   4. Displaying the image captions and their confidence values.
 local_image = open(local_image_path, "rb")
-local_image_features = ["description"]
-local_image_analysis = computervision_client.analyze_image_in_stream(local_image, local_image_features)
+description = computervision_client.describe_image_in_stream(local_image)
 
 print("\nCaptions from local image: ")
-if (len(local_image_analysis.description.captions) == 0):
+if (len(description.captions) == 0):
     print("No captions detected.")
 else:
-    for caption in local_image_analysis.description.captions:
-        print("'" + caption.text + "'" + " with confidence " + str(caption.confidence))
+    for caption in description.captions:
+        print("'{}' with confidence {:.2f}%".format(caption.text, caption.confidence * 100))
 #  END - Describe a local image
 
 #   Get a remote image for analysis
@@ -84,15 +84,14 @@ print("\n\nRemote image URL:\n" + remote_image_url)
 #      - image URL
 #      - features to extract
 #   3. Displaying the image captions and their confidence values.
-remote_image_features = ["description"]
-remote_image_analysis = computervision_client.analyze_image(remote_image_url, remote_image_features)
+description = computervision_client.describe_image(remote_image_url)
 
 print("\nCaptions from remote image: ")
-if (len(remote_image_analysis.description.captions) == 0):
+if (len(description.captions) == 0):
     print("No captions detected.")
 else:
-    for caption in remote_image_analysis.description.captions:
-        print("'" + caption.text + "'" + " with confidence " + str(caption.confidence))
+    for caption in description.captions:
+        print("'{}' with confidence {:.2f}%".format(caption.text, caption.confidence * 100))
 #   END - Describe a remote image
 
 
@@ -112,7 +111,7 @@ if (len(local_image_analysis.categories) == 0):
     print("No categories detected.")
 else:
     for category in local_image_analysis.categories:
-        print("'" + category.name + "'" + " with confidence " + str(category.score))
+        print("'{}' with confidence {:.2f}%".format(category.name, category.score * 100))
 #   END - Categorize a local image
 
 # Categorize a remote image by:
@@ -128,26 +127,25 @@ if (len(remote_image_analysis.categories) == 0):
     print("No categories detected.")
 else:
     for category in remote_image_analysis.categories:
-        print("'" + category.name + "'" + " with confidence " + str(category.score))
+        print("'{}' with confidence {:.2f}%".format(category.name, category.score * 100))
 #   END - Categorize a remote image
 
 # Tag a local image by:
 #   1. Opening the binary file for reading.
 #   2. Defining what to extract from the image by initializing an array of analyze_image_in_stream.
-#   3. Calling the Computer Vision service's analyze_image_in_stream with the:
+#   3. Calling the Computer Vision service's tag_image_in_stream with the:
 #      - image
 #      - features to extract
 #   4. Displaying the image captions and their confidence values.
 local_image = open(local_image_path, "rb")
-local_image_features = ["tags"]
-local_image_analysis = computervision_client.analyze_image_in_stream(local_image, local_image_features)
+local_image_analysis = computervision_client.tag_image_in_stream(local_image)
 
 print("\nTags in the local image: ")
 if (len(local_image_analysis.tags) == 0):
     print("No tags detected.")
 else:
     for tag in local_image_analysis.tags:
-        print("'" + tag.name + "'" + " with confidence " + str(tag.confidence))
+        print("'{}' with confidence {:.2f}%".format(tag.name, tag.confidence * 100))
 #   END - Tag a local image
 
 # Tag a remote image by:
@@ -155,15 +153,14 @@ else:
 #      - image URL
 #      - features to extract
 #   2. Displaying the image captions and their confidence values.
-remote_image_features = ["tags"]
-remote_image_analysis = computervision_client.analyze_image(remote_image_url, remote_image_features)
+remote_image_analysis = computervision_client.tag_image(remote_image_url)
 
 print("\nTags in the remote image: ")
 if (len(remote_image_analysis.tags) == 0):
     print("No tags detected.")
 else:
     for tag in remote_image_analysis.tags:
-        print("'" + tag.name + "'" + " with confidence " + str(tag.confidence))
+        print("'{}' with confidence {:.2f}%".format(tag.name, tag.confidence * 100))
 #   END - Tag a remote image
 
 # Detect faces in a local image by:
@@ -182,10 +179,10 @@ if (len(local_image_analysis.faces) == 0):
     print("No faces detected.")
 else:
     for face in local_image_analysis.faces:
-        print("'" + face.gender + "'" + " of age " + str(face.age) + " at location " \
-        + str(face.face_rectangle.left) + ", " + str(face.face_rectangle.top) + ", " \
-        + str(face.face_rectangle.left + face.face_rectangle.width) + ", " \
-        + str(face.face_rectangle.top + face.face_rectangle.height))
+        print("'{}' of age {} at location {}, {}, {}, {}".format(face.gender, face.age, \
+        face.face_rectangle.left, face.face_rectangle.top, \
+        face.face_rectangle.left + face.face_rectangle.width, \
+        face.face_rectangle.top + face.face_rectangle.height))
 #   END - Detect faces in a local image
 
 # Detect faces in a remote image by:
@@ -201,10 +198,10 @@ if (len(remote_image_analysis.faces) == 0):
     print("No faces detected.")
 else:
     for face in remote_image_analysis.faces:
-        print("'" + face.gender + "'" + " of age " + str(face.age) + " at location " \
-        + str(face.face_rectangle.left) + ", " + str(face.face_rectangle.top) + ", " \
-        + str(face.face_rectangle.left + face.face_rectangle.width) + ", " \
-        + str(face.face_rectangle.top + face.face_rectangle.height))
+        print("'{}' of age {} at location {}, {}, {}, {}".format(face.gender, face.age, \
+        face.face_rectangle.left, face.face_rectangle.top, \
+        face.face_rectangle.left + face.face_rectangle.width, \
+        face.face_rectangle.top + face.face_rectangle.height))
 #   END - Detect faces in a remote image
 
 # Detect adult or racy content in a local image by:
@@ -219,8 +216,12 @@ local_image_features = ["adult"]
 local_image_analysis = computervision_client.analyze_image_in_stream(local_image, local_image_features)
 
 print("\nAnalyzing local image for adult or racy content ... ")
-print("Is adult content: " + str(local_image_analysis.adult.is_adult_content) + " with confidence " + str(local_image_analysis.adult.adult_score))
-print("Has racy content: " + str(local_image_analysis.adult.is_racy_content) + " with confidence " + str(local_image_analysis.adult.racy_score))
+print("Is adult content: {} with confidence {:.2f}%".format(local_image_analysis.adult.is_adult_content, local_image_analysis.adult.adult_score * 100))
+print("Has racy content: {} with confidence {:.2f}%".format(local_image_analysis.adult.is_racy_content, local_image_analysis.adult.racy_score * 100))
+
+
+# print("Is adult content: " + str(local_image_analysis.adult.is_adult_content) + " with confidence " + str(local_image_analysis.adult.adult_score))
+# print("Has racy content: " + str(local_image_analysis.adult.is_racy_content) + " with confidence " + str(local_image_analysis.adult.racy_score))
 #   END - Detect adult or racy content in a local image
 
 # Detect adult or racy content in a remote image by:
@@ -232,8 +233,8 @@ remote_image_features = ["adult"]
 remote_image_analysis = computervision_client.analyze_image(remote_image_url, remote_image_features)
 
 print("\nAnalyzing remote image for adult or racy content ... ")
-print("Is adult content: " + str(local_image_analysis.adult.is_adult_content) + " with confidence " + str(local_image_analysis.adult.adult_score))
-print("Has racy content: " + str(local_image_analysis.adult.is_racy_content) + " with confidence " + str(local_image_analysis.adult.racy_score))
+print("Is adult content: {} with confidence {:.2f}%".format(remote_image_analysis.adult.is_adult_content, local_image_analysis.adult.adult_score * 100))
+print("Has racy content: {} with confidence {:.2f}%".format(remote_image_analysis.adult.is_racy_content, local_image_analysis.adult.racy_score * 100))
 #   END - Detect adult or racy content in a remote image
 
 # Detect the color scheme of a local image by:
@@ -247,14 +248,14 @@ local_image_features = ["color"]
 local_image_analysis = computervision_client.analyze_image_in_stream(local_image, local_image_features)
 
 print("\nColor scheme of the local image: ");
-print("Is black and white: " + str(local_image_analysis.color.is_bw_img))
-print("Accent color: 0x" + local_image_analysis.color.accent_color)
-print("Dominant background color: " + local_image_analysis.color.dominant_color_background)
-print("Dominant foreground color: " + local_image_analysis.color.dominant_color_foreground)
-print("Dominant colors: " + str(local_image_analysis.color.dominant_colors))
+print("Is black and white: ".format(local_image_analysis.color.is_bw_img))
+print("Accent color: 0x{}".format(local_image_analysis.color.accent_color))
+print("Dominant background color: {}".format(local_image_analysis.color.dominant_color_background))
+print("Dominant foreground color: {}".format(local_image_analysis.color.dominant_color_foreground))
+print("Dominant colors: {}".format(local_image_analysis.color.dominant_colors))
 #   END - Detect the color scheme in a local image
 
-# Detect the color scheme of a local image by:
+# Detect the color scheme of a remote image by:
 #   1. Calling the Computer Vision service's analyze_image with the:
 #      - image
 #      - features to extract
@@ -262,17 +263,17 @@ print("Dominant colors: " + str(local_image_analysis.color.dominant_colors))
 remote_image_features = ["color"]
 remote_image_analysis = computervision_client.analyze_image(remote_image_url, remote_image_features)
 
-print("\nColor scheme of the local image: ");
-print("Is black and white: " + str(remote_image_analysis.color.is_bw_img))
-print("Accent color: 0x" + remote_image_analysis.color.accent_color)
-print("Dominant background color: " + remote_image_analysis.color.dominant_color_background)
-print("Dominant foreground color: " + remote_image_analysis.color.dominant_color_foreground)
-print("Dominant colors: " + str(remote_image_analysis.color.dominant_colors))
+print("\nColor scheme of the remote image: ");
+print("Is black and white: ".format(remote_image_analysis.color.is_bw_img))
+print("Accent color: 0x{}".format(remote_image_analysis.color.accent_color))
+print("Dominant background color: {}".format(remote_image_analysis.color.dominant_color_background))
+print("Dominant foreground color: {}".format(remote_image_analysis.color.dominant_color_foreground))
+print("Dominant colors: {}".format(remote_image_analysis.color.dominant_colors))
 #   END - Detect the color scheme in a remote image
 
 #   Detect domain-specific content (celebrities/landmarks) in a local image by:
 #   1. Opening the binary file for reading.
-#   2. Calling the Computer Vision service's analyze_image_by_domain with the:
+#   2. Calling the Computer Vision service's analyze_image_by_domain_in_stream with the:
 #      - domain-specific content to search for
 #      - image
 #   3. Displaying any domain-specific content (celebrities/landmarks).
@@ -292,7 +293,7 @@ for landmark in landmarks.result["landmarks"]:
 #   END Detect domain-specific content (celebrities/landmarks) in a local image
 
 #   Detect domain-specific content (celebrities/landmarks) in a remote image by:
-#   1. Calling the Computer Vision service's analyze_image with the:
+#   1. Calling the Computer Vision service's analyze_image_by_domain with the:
 #      - domain-specific content to search for
 #      - image
 #   2. Displaying any domain-specific content (celebrities/landmarks).
@@ -303,6 +304,8 @@ for celeb in celebs.result["celebrities"]:
     print(celeb["name"])
 
 landmarks = computervision_client.analyze_image_by_domain("landmarks", remote_image_url)
+
+print("\nLandmarks in the remote image:")
 for landmark in landmarks.result["landmarks"]:
     print(landmark["name"])
 #   END Detect domain-specific content (celebrities/landmarks) in a remote image
@@ -314,7 +317,7 @@ for landmark in landmarks.result["landmarks"]:
 #      - features to extract
 #   3. Displaying the image type.
 local_image = open(local_image_path, "rb")
-local_image_features = ["imagetype"]
+local_image_features = VisualFeatureTypes.image_type
 local_image_analysis = computervision_client.analyze_image_in_stream(local_image, local_image_features)
 
 print("\nImage type of local image:")
@@ -338,7 +341,7 @@ else:
 #      - image
 #      - features to extract
 #   2. Displaying the image type.
-remote_image_features = ["imagetype"]
+remote_image_features = VisualFeatureTypes.image_type
 remote_image_analysis = computervision_client.analyze_image(remote_image_url, remote_image_features)
 
 print("\nImage type of remote image:")
@@ -370,14 +373,14 @@ if len(local_image_analysis.objects) == 0:
     print("No objects detected.")
 else:
     for object in local_image_analysis.objects:
-        print("object at location " + \
-        str(object.rectangle.x) + ", " + str(object.rectangle.x + object.rectangle.w) + ", " + \
-        str(object.rectangle.y) + ", " + str(object.rectangle.y + object.rectangle.h))
+        print("object at location {}, {}, {}, {}".format( \
+        object.rectangle.x, object.rectangle.x + object.rectangle.w, \
+        object.rectangle.y, object.rectangle.y + object.rectangle.h))
 #   END - Detect objects in a local image
 
 #   Detect objects in a remote image by:
 #   1. Opening the binary file for reading.
-#   2. Calling the Computer Vision service's detect_objects_in_stream with the:
+#   2. Calling the Computer Vision service's detect_objects with the:
 #      - image
 #      - features to extract
 #   3. Displaying the location of the objects.
@@ -388,9 +391,9 @@ if len(remote_image_analysis.objects) == 0:
     print("No objects detected.")
 else:
     for object in remote_image_analysis.objects:
-        print("object at location " + \
-        str(object.rectangle.x) + ", " + str(object.rectangle.x + object.rectangle.w) + ", " + \
-        str(object.rectangle.y) + ", " + str(object.rectangle.y + object.rectangle.h))
+        print("object at location {}, {}, {}, {}".format( \
+        object.rectangle.x, object.rectangle.x + object.rectangle.w, \
+        object.rectangle.y, object.rectangle.y + object.rectangle.h))
 #   END - Detect objects in a remote image
 
 #   Detect brands in a local image by:
@@ -409,9 +412,9 @@ if len(local_image_analysis.brands) == 0:
     print("No brands detected.")
 else:
     for brand in local_image_analysis.brands:
-        print("'" + brand.name + " with confidence " + str(brand.confidence) + " at location " + \
-        str(brand.rectangle.x) + ", " + str(brand.rectangle.x + brand.rectangle.w) + ", " + \
-        str(brand.rectangle.y) + ", " + str(brand.rectangle.y + brand.rectangle.h))
+        print("'{}' brand detected with confidence {:.1f}% at location {}, {}, {}, {}".format( \
+        brand.name, brand.confidence * 100, brand.rectangle.x, brand.rectangle.x + brand.rectangle.w, \
+        brand.rectangle.y, brand.rectangle.y + brand.rectangle.h))
 #   END - Detect brands in a local image
 
 #   Detect brands in a remote image by:
@@ -428,9 +431,9 @@ if len(remote_image_analysis.brands) == 0:
     print("No brands detected.")
 else:
     for brand in remote_image_analysis.brands:
-        print("'" + brand.name + " with confidence " + str(brand.confidence) + " at location " + \
-        str(brand.rectangle.x) + ", " + str(brand.rectangle.x + brand.rectangle.w)  + ", " + \
-        str(brand.rectangle.y) + ", " + str(brand.rectangle.y + brand.rectangle.h))
+        print("'{}' brand detected with confidence {:.1f}% at location {}, {}, {}, {}".format( \
+        brand.name, brand.confidence * 100, brand.rectangle.x, brand.rectangle.x + brand.rectangle.w, \
+        brand.rectangle.y, brand.rectangle.y + brand.rectangle.h))
 #   END - Detect brands in a remote image
 
 # Recognize text with the Read API in a local image by:
@@ -503,3 +506,13 @@ if result.status == TextOperationStatusCodes.succeeded:
             print(line.bounding_box)
             print()
 #   END - Recognizing printed and handwritten text with the batch read API in a remote image
+
+# Recognize printed text with OCR in a local image by:
+local_image_path = "resources\\printed_text.jpg"
+#   END - Recognize printed text with OCR in a local image
+
+
+# Recognize text with OCR in a remote image by:
+remote_image_url = "https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/printed_text.jpg"
+
+#   END - Recognize printed text with OCR in a remote image
