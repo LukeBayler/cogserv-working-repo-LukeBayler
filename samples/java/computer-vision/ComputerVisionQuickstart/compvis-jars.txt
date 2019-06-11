@@ -1,0 +1,80 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------< com.microsoft.azure:azure-computervision-sample >-----------
+[INFO] Building ComputerVisionQuickstart.java 0.0.1-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:list (default-cli) @ azure-computervision-sample ---
+[INFO] 
+[INFO] The following files have been resolved:
+[INFO]    com.microsoft.azure:azure-mgmt-redis:jar:1.9.0:compile
+[INFO]    org.apache.commons:commons-lang3:jar:3.4:compile
+[INFO]    org.slf4j:slf4j-api:jar:1.7.22:compile
+[INFO]    net.jcip:jcip-annotations:jar:1.0:compile
+[INFO]    org.slf4j:slf4j-simple:jar:1.7.5:compile
+[INFO]    com.squareup.okhttp3:logging-interceptor:jar:3.11.0:compile
+[INFO]    com.squareup.retrofit2:converter-jackson:jar:2.5.0:compile
+[INFO]    com.microsoft.azure:azure-mgmt-storage:jar:1.9.0:compile
+[INFO]    com.microsoft.azure:azure-mgmt-cdn:jar:1.9.0:compile
+[INFO]    commons-net:commons-net:jar:3.3:compile
+[INFO]    com.microsoft.azure:azure-mgmt-monitor:jar:1.9.0:compile
+[INFO]    com.microsoft.azure:azure-mgmt-network:jar:1.9.0:compile
+[INFO]    org.apache.httpcomponents:httpcore:jar:4.4.5:compile
+[INFO]    com.fasterxml.jackson.core:jackson-core:jar:2.9.9:compile
+[INFO]    com.fasterxml.jackson.datatype:jackson-datatype-joda:jar:2.9.8:compile
+[INFO]    io.reactivex:rxjava:jar:1.3.8:compile
+[INFO]    com.microsoft.azure:azure-mgmt-keyvault:jar:1.9.0:compile
+[INFO]    com.nimbusds:oauth2-oidc-sdk:jar:4.5:compile
+[INFO]    com.microsoft.azure:azure-mgmt-containerinstance:jar:1.9.0:compile
+[INFO]    com.squareup.okio:okio:jar:1.14.0:compile
+[INFO]    com.squareup.retrofit2:adapter-rxjava:jar:2.4.0:compile
+[INFO]    com.microsoft.azure:azure-annotations:jar:1.7.0:compile
+[INFO]    com.microsoft.azure:azure-mgmt-trafficmanager:jar:1.9.0:compile
+[INFO]    com.microsoft.azure:azure-keyvault-webkey:jar:1.0.0:compile
+[INFO]    com.fasterxml.jackson.core:jackson-annotations:jar:2.9.0:compile
+[INFO]    com.microsoft.azure:azure-client-runtime:jar:1.4.0:compile
+[INFO]    com.microsoft.azure:azure-mgmt-graph-rbac:jar:1.9.0:compile
+[INFO]    com.microsoft.azure:azure-keyvault-core:jar:0.8.0:compile
+[INFO]    com.google.guava:guava:jar:20.0:compile
+[INFO]    com.microsoft.azure:azure-mgmt-resources:jar:1.9.0:compile
+[INFO]    javax.mail:mail:jar:1.4.7:compile
+[INFO]    com.microsoft.azure:azure-mgmt-eventhub:jar:1.9.0:compile
+[INFO]    com.microsoft.azure:azure-mgmt-sql:jar:1.9.0:compile
+[INFO]    com.microsoft.azure:azure-client-authentication:jar:1.4.0:compile
+[INFO]    com.nimbusds:nimbus-jose-jwt:jar:3.1.2:compile
+[INFO]    org.bouncycastle:bcprov-jdk15on:jar:1.51:compile
+[INFO]    com.google.code.gson:gson:jar:2.2.4:compile
+[INFO]    com.microsoft.azure:azure-mgmt-msi:jar:1.9.0:compile
+[INFO]    com.squareup.okhttp3:okhttp:jar:3.11.0:compile
+[INFO]    com.microsoft.azure:azure-mgmt-locks:jar:1.9.0:compile
+[INFO]    joda-time:joda-time:jar:2.1:compile
+[INFO]    com.fasterxml.jackson.core:jackson-databind:jar:2.9.9:compile
+[INFO]    com.nimbusds:lang-tag:jar:1.4:compile
+[INFO]    com.squareup.okhttp3:okhttp-urlconnection:jar:3.11.0:compile
+[INFO]    com.microsoft.azure.cognitiveservices:azure-cognitiveservices-computervision:jar:1.0.2-beta:compile
+[INFO]    com.microsoft.azure:azure-mgmt-cosmosdb:jar:1.9.0:compile
+[INFO]    javax.activation:activation:jar:1.1:compile
+[INFO]    com.microsoft.azure:azure-mgmt-compute:jar:1.9.0:compile
+[INFO]    net.minidev:json-smart:jar:1.1.1:compile
+[INFO]    com.microsoft.azure:azure-mgmt-appservice:jar:1.9.0:compile
+[INFO]    commons-codec:commons-codec:jar:1.10:compile
+[INFO]    com.microsoft.azure:azure-mgmt-containerregistry:jar:1.9.0:compile
+[INFO]    com.microsoft.azure:azure:jar:1.9.0:compile
+[INFO]    com.microsoft.azure:azure-mgmt-batch:jar:1.9.0:compile
+[INFO]    com.microsoft.azure:azure-mgmt-dns:jar:1.9.0:compile
+[INFO]    com.microsoft.azure:azure-keyvault:jar:1.0.0:compile
+[INFO]    com.microsoft.azure:azure-mgmt-containerservice:jar:1.9.0:compile
+[INFO]    com.microsoft.rest:client-runtime:jar:1.6.6:compile
+[INFO]    com.microsoft.azure:azure-mgmt-servicebus:jar:1.9.0:compile
+[INFO]    com.microsoft.azure:azure-mgmt-batchai:jar:1.9.0:compile
+[INFO]    com.microsoft.azure:azure-mgmt-search:jar:1.9.0:compile
+[INFO]    com.squareup.retrofit2:retrofit:jar:2.5.0:compile
+[INFO]    com.microsoft.azure:azure-storage:jar:6.1.0:compile
+[INFO]    com.microsoft.azure:adal4j:jar:1.1.2:compile
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.383 s
+[INFO] Finished at: 2019-06-11T12:47:33-07:00
+[INFO] ------------------------------------------------------------------------
